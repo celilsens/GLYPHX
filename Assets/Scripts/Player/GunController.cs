@@ -10,15 +10,18 @@ public class GunController : MonoBehaviour
     [SerializeField] private float _bulletSpawnOffset = 4f;
     [SerializeField] private float _fireCooldown = 1f;
     private float _lastShotTime = 0f;
-    
+
     private void Update()
     {
-        Vector3 mouseWorldPos = GetMouseWorldPosition();
-        Vector3 direction = CalculateDirection(mouseWorldPos);
+        if (GameManager.Instance.IsGameActive)
+        {
+            Vector3 mouseWorldPos = GetMouseWorldPosition();
+            Vector3 direction = CalculateDirection(mouseWorldPos);
+            UpdateGunPosition(direction);
+            UpdateGunRotation(direction);
+            HandleShooting(direction);
+        }
 
-        UpdateGunPosition(direction);
-        UpdateGunRotation(direction);
-        HandleShooting(direction);
     }
 
     private Vector3 GetMouseWorldPosition()
