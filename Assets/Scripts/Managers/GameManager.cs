@@ -20,6 +20,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool GetGameState()
+    {
+        if (IsGameActive)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -30,6 +42,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         IsGameActive = true;
+    }
+
+    public void GameOver()
+    {
+        PauseGame();
+        //TODO: Game Over UI
     }
 
     void LoadPlayerMoney()
