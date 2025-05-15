@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameActive { get; private set; } = true;
     private int _playerMoney;
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -20,17 +20,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool GetGameState()
-    {
-        if (IsGameActive)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    public bool GetGameState() => IsGameActive;
 
     public void PauseGame()
     {
@@ -50,12 +40,12 @@ public class GameManager : MonoBehaviour
         //TODO: Game Over UI
     }
 
-    void LoadPlayerMoney()
+    public void LoadPlayerMoney()
     {
         _playerMoney = PlayerPrefs.GetInt("PlayerMoney", 0);
     }
 
-    void SavePlayerMoney()
+    public void SavePlayerMoney()
     {
         PlayerPrefs.SetInt("PlayerMoney", _playerMoney);
         PlayerPrefs.Save();

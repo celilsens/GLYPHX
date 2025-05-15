@@ -25,7 +25,7 @@ public class Player : Damageable
         {
             effect.Play();
         }
-        //Level End Screen
-        //Destroy(gameObject);
+        //TODO: Level End Screen
+        //TODO-Active: Destroy(gameObject);
     }
 }

@@ -11,7 +11,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private float _fireCooldown = 1f;
     private float _lastShotTime = 0f;
     
-    void Update()
+    private void Update()
     {
         Vector3 mouseWorldPos = GetMouseWorldPosition();
         Vector3 direction = CalculateDirection(mouseWorldPos);

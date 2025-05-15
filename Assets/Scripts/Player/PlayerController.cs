@@ -12,17 +12,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 inputDirection;
     private Vector2 lastMovement;
 
-    void Awake()
+    private void Awake()
     {
         _playerRb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         HandleInputs();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         HandleMovement();
         HandleRotation();

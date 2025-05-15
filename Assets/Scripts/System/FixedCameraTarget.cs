@@ -8,7 +8,7 @@ public class FixedCameraTarget : MonoBehaviour
     [SerializeField] private float weight = 0.75f;
     [SerializeField] private float maxOffset = 3f;
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         Vector3 desiredPosition = Vector3.Lerp(sceneCenter, player.position, weight);
         Vector3 offset = desiredPosition - sceneCenter;
