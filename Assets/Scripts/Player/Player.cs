@@ -11,16 +11,20 @@ public class Player : Damageable
     }
 
     private void OnTriggerExit2D(Collider2D other)
-{
-    if(other.CompareTag("Boundary"))
     {
-        Die();
+        if (other.CompareTag("Boundary"))
+        {
+            Die();
+        }
     }
-}
     public override void Die()
     {
         Debug.Log("Player Death");
-        //Play Player Death Animation
+        ParticleSystem effect = GetComponentInChildren<ParticleSystem>();
+        if (effect != null)
+        {
+            effect.Play();
+        }
         //Level End Screen
         //Destroy(gameObject);
     }
