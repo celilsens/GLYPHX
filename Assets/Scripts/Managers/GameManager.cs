@@ -1,9 +1,12 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public bool IsGameActive { get; private set; } = true;
+    public bool CanPlayerMove = true;
+    private bool _isGameOver;
     private int _playerMoney;
 
     private void Awake()
@@ -20,23 +23,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool GetGameState() => IsGameActive;
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    private void TogglePause()
+    {
+        if (_isGameOver) return;
+
+        if (IsGameActive)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+    }
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        Debug.Log("Game Paused");
+        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, 0.2f).SetEase(Ease.InQuad).OnComplete(() => { Time.timeScale = 0f; });
         IsGameActive = false;
+        CanPlayerMove = false;
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        Debug.Log("Game Resumed");
+        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1f, 0.2f).SetEase(Ease.OutQuad).OnComplete(() => { Time.timeScale = 1f; });
         IsGameActive = true;
+        CanPlayerMove = true;
     }
 
     public void GameOver()
     {
         PauseGame();
+        _isGameOver = true;
         //TODO: Game Over UI
     }
 
@@ -72,4 +100,5 @@ public class GameManager : MonoBehaviour
     {
         return _playerMoney;
     }
+
 }
