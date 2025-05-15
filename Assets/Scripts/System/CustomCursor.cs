@@ -7,7 +7,6 @@ public class CustomCursor : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         Cursor.visible = false;
         _cursorRectTransform = GetComponent<RectTransform>();
     }
