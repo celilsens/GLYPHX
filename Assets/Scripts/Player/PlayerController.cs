@@ -24,8 +24,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
-        HandleRotation();
+        if (GameManager.Instance.CanPlayerMove)
+        {
+            HandleMovement();
+            HandleRotation();
+        }
     }
 
     private void HandleInputs()

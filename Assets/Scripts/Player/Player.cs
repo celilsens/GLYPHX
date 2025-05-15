@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : Damageable
@@ -20,12 +21,38 @@ public class Player : Damageable
     public override void Die()
     {
         Debug.Log("Player Death");
+        
+        GameManager.Instance.CanPlayerMove = false;
+
+        Rigidbody2D playerRb = GetComponent<Rigidbody2D>();
+
+        if (playerRb != null)
+        {
+            playerRb.bodyType = RigidbodyType2D.Kinematic;
+            playerRb.linearVelocity = Vector2.zero;
+
+        }
+
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.enabled = false;
+        }
+
         ParticleSystem effect = GetComponentInChildren<ParticleSystem>();
         if (effect != null)
         {
             effect.Play();
+            StartCoroutine(WaitForEffectToEnd(effect));
         }
-        //TODO: Level End Screen
-        //TODO-Active: Destroy(gameObject);
+        else
+        {
+            GameManager.Instance.GameOver();
+        }
     }
+    private IEnumerator WaitForEffectToEnd(ParticleSystem effect)
+    {
+        yield return new WaitWhile(() => effect.isPlaying);
+        GameManager.Instance.GameOver();
+    }
+
 }
