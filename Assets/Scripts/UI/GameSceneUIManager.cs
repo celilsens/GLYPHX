@@ -13,6 +13,13 @@ public class GameSceneUIManager : MonoBehaviour
     [SerializeField] private GameObject _loseUI;
     [SerializeField] private GameObject _settingsUI;
 
+    [Header("Buttons")]
+    [SerializeField] private Button _settingsUIOpenButton;
+    [SerializeField] private Button _settingsUICloseButton;
+    [SerializeField] private Button _settingsUIRestartButton;
+    [SerializeField] private Button _settingsUIResumeButton;
+    [SerializeField] private Button _settingsUIHangarButton;
+
     private Player playerManager;
 
     private void Start()
@@ -90,9 +97,25 @@ public class GameSceneUIManager : MonoBehaviour
         {
             _loseUI.transform.localScale = Vector3.zero;
         }
+
         if (_settingsUI != null)
         {
             _settingsUI.transform.localScale = Vector3.zero;
+        }
+
+        if (_settingsUIOpenButton != null)
+        {
+            _settingsUIOpenButton.onClick.AddListener(GameManager.Instance.PauseGame);
+        }
+
+        if (_settingsUICloseButton != null)
+        {
+            _settingsUICloseButton.onClick.AddListener(GameManager.Instance.ResumeGame);
+        }
+
+        if (_settingsUIResumeButton != null)
+        {
+            _settingsUIResumeButton.onClick.AddListener(GameManager.Instance.ResumeGame);
         }
     }
 

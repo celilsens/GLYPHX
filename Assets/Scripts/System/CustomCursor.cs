@@ -7,13 +7,21 @@ public class CustomCursor : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
+
         _cursorRectTransform = GetComponent<RectTransform>();
     }
 
     private void Update()
     {
-        _cursorRectTransform.position = Input.mousePosition;
+        if (GameManager.Instance.IsGameActive)
+        {
+            Cursor.visible = false;
+            _cursorRectTransform.position = Input.mousePosition;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
     }
 
     private void OnDestroy()
