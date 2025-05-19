@@ -1,13 +1,20 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public bool IsGameActive { get; private set; } = true;
-    public bool CanPlayerMove = true;
+    public bool IsGameActive = true;
+    public float PlayerMaxHealth { get; private set; } = 100f;
+    public float PlayerMaxShield { get; private set; } = 50f;
+
     private bool _isGameOver;
     private int _playerMoney;
+
+    public event Action OnGameOver;
+    public event Action OnPause;
+    public event Action OnResume;
 
     private void Awake()
     {
@@ -16,6 +23,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             LoadPlayerMoney();
+            LoadPlayerStats();
         }
         else
         {
@@ -23,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
@@ -48,24 +56,29 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Debug.Log("Game Paused");
-        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, 0.2f).SetEase(Ease.InQuad).OnComplete(() => { Time.timeScale = 0f; });
+
         IsGameActive = false;
-        CanPlayerMove = false;
+
+        OnPause?.Invoke();
     }
 
     public void ResumeGame()
     {
         Debug.Log("Game Resumed");
-        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1f, 0.2f).SetEase(Ease.OutQuad).OnComplete(() => { Time.timeScale = 1f; });
+
         IsGameActive = true;
-        CanPlayerMove = true;
+
+        OnResume?.Invoke();
     }
 
     public void GameOver()
     {
-        PauseGame();
+        Debug.Log("Game Over!!!");
+
+        IsGameActive = false;
         _isGameOver = true;
-        //TODO: Game Over UI
+
+        OnGameOver?.Invoke();
     }
 
     public void LoadPlayerMoney()
@@ -101,4 +114,28 @@ public class GameManager : MonoBehaviour
         return _playerMoney;
     }
 
+    public void LoadPlayerStats()
+    {
+        PlayerMaxHealth = PlayerPrefs.GetFloat("PlayerMaxHealth", 100f);
+        PlayerMaxShield = PlayerPrefs.GetFloat("PlayerMaxShield", 50f);
+    }
+
+    public void SavePlayerStats()
+    {
+        PlayerPrefs.SetFloat("PlayerMaxHealth", PlayerMaxHealth);
+        PlayerPrefs.SetFloat("PlayerMaxShield", PlayerMaxShield);
+        PlayerPrefs.Save();
+    }
+
+    public void UpgradePlayerHealth(float additionalHealth)
+    {
+        PlayerMaxHealth += additionalHealth;
+        SavePlayerStats();
+    }
+
+    public void UpgradePlayerShield(float additionalShield)
+    {
+        PlayerMaxShield += additionalShield;
+        SavePlayerStats();
+    }
 }

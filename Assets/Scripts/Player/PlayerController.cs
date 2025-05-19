@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.CanPlayerMove)
+        if (GameManager.Instance.IsGameActive)
         {
             HandleMovement();
             HandleRotation();

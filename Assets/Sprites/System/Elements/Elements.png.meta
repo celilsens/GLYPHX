@@ -1,0 +1,1252 @@
+fileFormatVersion: 2
+guid: 9848e19554695c34697d251d7b43d4c7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6519106895325619043
+    second: Elements_0
+  - first:
+      213: -56389684126255199
+    second: Elements_1
+  - first:
+      213: 7980543043835355830
+    second: Elements_2
+  - first:
+      213: 6868460385936980070
+    second: Elements_3
+  - first:
+      213: -4587099157823602956
+    second: Elements_4
+  - first:
+      213: -1164242250183328453
+    second: Elements_5
+  - first:
+      213: -2849855965665627373
+    second: Elements_6
+  - first:
+      213: -6089097470041444721
+    second: Elements_7
+  - first:
+      213: -25362254402286421
+    second: Elements_8
+  - first:
+      213: -7152996289774772548
+    second: Elements_9
+  - first:
+      213: 2075673510754308750
+    second: Elements_10
+  - first:
+      213: 4218381197889179219
+    second: Elements_11
+  - first:
+      213: -8725121901846334263
+    second: Elements_12
+  - first:
+      213: -2985959870812857811
+    second: Elements_13
+  - first:
+      213: 5883078336702449260
+    second: Elements_14
+  - first:
+      213: -1734225925238353097
+    second: Elements_15
+  - first:
+      213: 2034654576780707489
+    second: Elements_16
+  - first:
+      213: -1824744838453294235
+    second: Elements_17
+  - first:
+      213: 1182325305110177808
+    second: Elements_18
+  - first:
+      213: -7262788364417843828
+    second: Elements_19
+  - first:
+      213: -5395207348581191411
+    second: Elements_20
+  - first:
+      213: -935265866160211824
+    second: Elements_21
+  - first:
+      213: -173720338999940009
+    second: Elements_22
+  - first:
+      213: -8165816045326215994
+    second: Elements_23
+  - first:
+      213: -2694245604118875905
+    second: Elements_24
+  - first:
+      213: -6403803790503420145
+    second: Elements_25
+  - first:
+      213: 8920508708696810481
+    second: Elements_26
+  - first:
+      213: 3226475386614621569
+    second: Elements_27
+  - first:
+      213: -8806937912965739273
+    second: Elements_28
+  - first:
+      213: -7573799181316810085
+    second: Elements_29
+  - first:
+      213: 5230441614312333045
+    second: Elements_30
+  - first:
+      213: 7461543255553529663
+    second: Elements_31
+  - first:
+      213: 9114489040544593668
+    second: Elements_32
+  - first:
+      213: -6559159659016015594
+    second: Elements_33
+  - first:
+      213: 5963383144456840280
+    second: Elements_34
+  - first:
+      213: -3574196961985176656
+    second: Elements_35
+  - first:
+      213: 4919467755472748164
+    second: Elements_36
+  - first:
+      213: 8290288510357486969
+    second: Elements_37
+  - first:
+      213: 6562689390785424403
+    second: Elements_38
+  - first:
+      213: 2705544820642628926
+    second: Elements_39
+  - first:
+      213: -7043488871221892437
+    second: Elements_40
+  - first:
+      213: -7742234839986208777
+    second: Elements_41
+  - first:
+      213: 26560681860826137
+    second: Elements_42
+  - first:
+      213: 5662939735919958399
+    second: Elements_43
+  - first:
+      213: 4290295043606434755
+    second: Elements_44
+  - first:
+      213: 2765244173454553892
+    second: Elements_45
+  - first:
+      213: 3275979011988066945
+    second: Elements_46
+  - first:
+      213: -3220792293775487071
+    second: Elements_47
+  - first:
+      213: -4679621121949371071
+    second: Elements_48
+  - first:
+      213: 8796632235484579413
+    second: Elements_49
+  - first:
+      213: -7340925199939846500
+    second: Elements_50
+  - first:
+      213: 5557907929817867197
+    second: Elements_51
+  - first:
+      213: -7650788675525128457
+    second: Elements_52
+  - first:
+      213: -5329925147065039111
+    second: Elements_53
+  - first:
+      213: 7790106217563163014
+    second: Elements_54
+  - first:
+      213: 5512199350384368935
+    second: Elements_55
+  - first:
+      213: 5991013983243180530
+    second: Elements_56
+  - first:
+      213: 7417949770358359750
+    second: Elements_57
+  - first:
+      213: -8679350056855131729
+    second: Elements_58
+  - first:
+      213: -4219259964472593516
+    second: Elements_59
+  - first:
+      213: -4497015439291813663
+    second: Elements_60
+  - first:
+      213: 3909831672722452607
+    second: Elements_61
+  - first:
+      213: -6952965862016855175
+    second: Elements_62
+  - first:
+      213: 5810612344555038108
+    second: Elements_63
+  - first:
+      213: 6054348569823792557
+    second: Elements_64
+  - first:
+      213: 3227407189397398590
+    second: Elements_65
+  - first:
+      213: 1933582377750547081
+    second: Elements_66
+  - first:
+      213: -6435239295530534258
+    second: Elements_67
+  - first:
+      213: -1449449424717242083
+    second: Elements_68
+  - first:
+      213: -7211382989734437543
+    second: Elements_69
+  - first:
+      213: 470083633968728021
+    second: Elements_70
+  - first:
+      213: 8835756186376028791
+    second: Elements_71
+  - first:
+      213: -5584693395259666522
+    second: Elements_72
+  - first:
+      213: 6435365161384242742
+    second: Elements_73
+  - first:
+      213: -9092837416042731552
+    second: Elements_74
+  - first:
+      213: -3836623794193840025
+    second: Elements_75
+  - first:
+      213: -641296661476066848
+    second: Elements_76
+  - first:
+      213: -7119204672722106999
+    second: Elements_77
+  - first:
+      213: -8263686019233879314
+    second: Elements_78
+  - first:
+      213: 5343359883172332582
+    second: Elements_79
+  - first:
+      213: 6246218095643232489
+    second: Elements_80
+  - first:
+      213: -2682230111862088452
+    second: Elements_81
+  - first:
+      213: -3586742813932506270
+    second: Elements_82
+  - first:
+      213: 3202952427855468554
+    second: Elements_83
+  - first:
+      213: 3633645144461940884
+    second: Elements_84
+  - first:
+      213: -6021533322004906670
+    second: Elements_85
+  - first:
+      213: -8037637600557714637
+    second: Elements_86
+  - first:
+      213: -3131824368494329683
+    second: Elements_87
+  - first:
+      213: -8683354941298717009
+    second: Elements_88
+  - first:
+      213: -5081463732730781914
+    second: Elements_89
+  - first:
+      213: 7070659045357782502
+    second: Elements_90
+  - first:
+      213: -4007519126294732696
+    second: Elements_91
+  - first:
+      213: 223193764836041643
+    second: Elements_92
+  - first:
+      213: -4945450608640824614
+    second: Elements_93
+  - first:
+      213: 3800885437349831605
+    second: Elements_94
+  - first:
+      213: -7132177795080647042
+    second: Elements_95
+  - first:
+      213: 7411530947877510168
+    second: Elements_96
+  - first:
+      213: -1321808005333164696
+    second: Elements_97
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Neon_Textbox_Blue_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 3555
+        width: 1016
+        height: 425
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c115381da7785a0800000000000000
+      internalID: -6519106895325619043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Blue_2
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 3628
+        width: 1006
+        height: 404
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a778ac81e9a73ff0800000000000000
+      internalID: -56389684126255199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 2585
+        y: 3581
+        width: 367
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2658a9d9590ce60800000000000000
+      internalID: 7980543043835355830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_Blue_1
+      rect:
+        serializedVersion: 2
+        x: 3145
+        y: 3595
+        width: 367
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 668bd91945ca15f50800000000000000
+      internalID: 6868460385936980070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_White_1
+      rect:
+        serializedVersion: 2
+        x: 3675
+        y: 3595
+        width: 368
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fe3e649e995750c0800000000000000
+      internalID: -4587099157823602956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Blue_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 2273
+        width: 599
+        height: 1067
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d325587d7c7dfe0800000000000000
+      internalID: -1164242250183328453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Blue_1
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 3145
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313f87139174378d0800000000000000
+      internalID: -2849855965665627373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Blue_2
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 3145
+        width: 221
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8e2377cc1e2f7ba0800000000000000
+      internalID: -6089097470041444721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Skill_Blue_1
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 3208
+        width: 558
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bac06abf925e5aff0800000000000000
+      internalID: -25362254402286421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 2675
+        y: 3143
+        width: 183
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbe994cc5c37bbc90800000000000000
+      internalID: -7152996289774772548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_Blue_2
+      rect:
+        serializedVersion: 2
+        x: 3223
+        y: 3150
+        width: 182
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e82d2368f064ecc10800000000000000
+      internalID: 2075673510754308750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_White_2
+      rect:
+        serializedVersion: 2
+        x: 3753
+        y: 3150
+        width: 183
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e0f5b7953ba8a30800000000000000
+      internalID: 4218381197889179219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Blue_3
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 2875
+        width: 220
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c4f772abd32ae680800000000000000
+      internalID: -8725121901846334263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Blue_4
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 2875
+        width: 221
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ad0aa515dbf86d0800000000000000
+      internalID: -2985959870812857811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Skill_Blue_2
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 2960
+        width: 622
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6602fcc394e4a150800000000000000
+      internalID: 5883078336702449260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Blue_4
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 2387
+        width: 483
+        height: 451
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73315e595bacee7e0800000000000000
+      internalID: -1734225925238353097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 2582
+        y: 2592
+        width: 367
+        height: 365
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a603a9be8b8c3c10800000000000000
+      internalID: 2034654576780707489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_Blue_3
+      rect:
+        serializedVersion: 2
+        x: 3131
+        y: 2591
+        width: 366
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b8342cc343da6e0800000000000000
+      internalID: -1824744838453294235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Crosshair_White_3
+      rect:
+        serializedVersion: 2
+        x: 3661
+        y: 2591
+        width: 367
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0182c0cc996786010800000000000000
+      internalID: 1182325305110177808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Skill_Blue_3
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 2617
+        width: 569
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f5ebf916e1127a0800000000000000
+      internalID: -6403803790503420145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1559
+        width: 1016
+        height: 425
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9a9775b5c574e690800000000000000
+      internalID: -7573799181316810085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1632
+        width: 1006
+        height: 404
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fed187afe2469840800000000000000
+      internalID: 5230441614312333045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Player_Info_Blue
+      rect:
+        serializedVersion: 2
+        x: 2623
+        y: 1689
+        width: 1422
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f37da77de0abc8760800000000000000
+      internalID: 7461543255553529663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Empty_Bar_Blue
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 1467
+        width: 938
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 407f9d2ed7b2d7e70800000000000000
+      internalID: 9114489040544593668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1149
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6113743ca0f29f4a0800000000000000
+      internalID: -6559159659016015594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1149
+        width: 221
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 854e6e0ef5132c250800000000000000
+      internalID: 5963383144456840280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Skill_Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 1212
+        width: 558
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bbd79bccc6e56ec0800000000000000
+      internalID: -3574196961985176656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 277
+        width: 599
+        height: 1067
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95e3b4342173a050800000000000000
+      internalID: 5810612344555038108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 879
+        width: 220
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadcdba62fd550450800000000000000
+      internalID: 6054348569823792557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Indicator_Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 879
+        width: 221
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e34e29d3dbd0acc20800000000000000
+      internalID: 3227407189397398590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Skill_Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 965
+        width: 622
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ac6c19de675da10800000000000000
+      internalID: 1933582377750547081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Player_Info_Yellow
+      rect:
+        serializedVersion: 2
+        x: 2559
+        y: 809
+        width: 1423
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a7441c4ff61b6a0800000000000000
+      internalID: -6435239295530534258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Skill_Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 622
+        width: 569
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d11a5df7d6582ebe0800000000000000
+      internalID: -1449449424717242083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Textbox_Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 396
+        width: 483
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d959dd0650ceb90800000000000000
+      internalID: -7211382989734437543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Empty_Bar_Yellow
+      rect:
+        serializedVersion: 2
+        x: 2653
+        y: 579
+        width: 938
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d74e611392168600800000000000000
+      internalID: 470083633968728021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neon_Bar_Blue
+      rect:
+        serializedVersion: 2
+        x: 2653
+        y: 1370
+        width: 883
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7e895b808bee24089bab6cbda1df6a
+      internalID: 908550996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c45c5ae4eae14084082dc2f41197f469
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Neon_Bar_Blue: 908550996
+      Neon_Crosshair_Blue_1: 6868460385936980070
+      Neon_Crosshair_Blue_2: 2075673510754308750
+      Neon_Crosshair_Blue_3: -1824744838453294235
+      Neon_Crosshair_White_1: -4587099157823602956
+      Neon_Crosshair_White_2: 4218381197889179219
+      Neon_Crosshair_White_3: 1182325305110177808
+      Neon_Crosshair_Yellow_1: 7980543043835355830
+      Neon_Crosshair_Yellow_2: -7152996289774772548
+      Neon_Crosshair_Yellow_3: 2034654576780707489
+      Neon_Empty_Bar_Blue: 9114489040544593668
+      Neon_Empty_Bar_Yellow: 470083633968728021
+      Neon_Indicator_Blue_1: -2849855965665627373
+      Neon_Indicator_Blue_2: -6089097470041444721
+      Neon_Indicator_Blue_3: -8725121901846334263
+      Neon_Indicator_Blue_4: -2985959870812857811
+      Neon_Indicator_Yellow_1: -6559159659016015594
+      Neon_Indicator_Yellow_2: 5963383144456840280
+      Neon_Indicator_Yellow_3: 6054348569823792557
+      Neon_Indicator_Yellow_4: 3227407189397398590
+      Neon_Player_Info_Blue: 7461543255553529663
+      Neon_Player_Info_Yellow: -6435239295530534258
+      Neon_Skill_Blue_1: -25362254402286421
+      Neon_Skill_Blue_2: 5883078336702449260
+      Neon_Skill_Blue_3: -6403803790503420145
+      Neon_Skill_Yellow_1: -3574196961985176656
+      Neon_Skill_Yellow_2: 1933582377750547081
+      Neon_Skill_Yellow_3: -1449449424717242083
+      Neon_Textbox_Blue_1: -6519106895325619043
+      Neon_Textbox_Blue_2: -56389684126255199
+      Neon_Textbox_Blue_3: -1164242250183328453
+      Neon_Textbox_Blue_4: -1734225925238353097
+      Neon_Textbox_Yellow_1: -7573799181316810085
+      Neon_Textbox_Yellow_2: 5230441614312333045
+      Neon_Textbox_Yellow_3: 5810612344555038108
+      Neon_Textbox_Yellow_4: -7211382989734437543
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
