@@ -1,5 +1,4 @@
 using UnityEngine;
-using DG.Tweening;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +7,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameActive = true;
     public float PlayerMaxHealth { get; private set; } = 100f;
     public float PlayerMaxShield { get; private set; } = 50f;
+    public int PlayerDamage { get; private set; } = 20;
 
     private bool _isGameOver;
     private int _playerMoney;
