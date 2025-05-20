@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManagerController : MonoBehaviour
+public class SceneLoadManager : MonoBehaviour
 {
     // Singleton örneği
-    public static SceneManagerController Instance { get; private set; }
+    public static SceneLoadManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -36,5 +36,17 @@ public class SceneManagerController : MonoBehaviour
     public void LoadSceneByName(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadNextLevel()
+    {
+        LevelManager lm = FindFirstObjectByType<LevelManager>();
+
+        if (lm != null)
+        {
+            lm.SetNextLevel();
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

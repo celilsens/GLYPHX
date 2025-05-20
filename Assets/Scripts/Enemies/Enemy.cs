@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _currentHealth;
     [SerializeField] private Transform _fillTransform;
 
+    public event Action OnEnemyDeath;
+
     private void Start()
     {
         _currentHealth = _maxHealth;
@@ -36,22 +38,29 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         Debug.Log("Enemy Dead");
 
+        OnEnemyDeath?.Invoke();
+
         foreach (var collider in GetComponents<Collider2D>())
         {
             collider.enabled = false;
         }
-
-        ParticleSystem effect = GetComponentInChildren<ParticleSystem>();
 
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
         {
             sr.enabled = false;
         }
 
+        ParticleSystem effect = GetComponentInChildren<ParticleSystem>();
+
         if (effect != null)
         {
             effect.Play();
             StartCoroutine(WaitForEffectToEnd(effect));
+        }
+        else
+        {
+            GameManager.Instance.AddMoney(_rewardAmount);
+            Destroy(gameObject);
         }
     }
 
@@ -72,7 +81,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log(gameObject.name + ": Took Damage" + _currentHealth);
+            Debug.Log(gameObject.name + ": Took Damage." + "Current Health: " + _currentHealth);
             TakeDamage(GameManager.Instance.PlayerDamage);
             Destroy(other.gameObject);
         }
