@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _smoothTime = 0.1f;
     [SerializeField] private float _angularSpeed = 500f;
+    private float _storedAngularVelocity;
+    private Vector2 _storedVelocity;
 
     private Rigidbody2D _playerRb;
     private Vector2 currentVelocity = Vector2.zero;
@@ -26,8 +28,28 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.IsGameActive)
         {
+            if (_storedVelocity != Vector2.zero || _storedAngularVelocity != 0f)
+            {
+                _playerRb.linearVelocity = _storedVelocity;
+                _playerRb.angularVelocity = _storedAngularVelocity;
+
+                _storedVelocity = Vector2.zero;
+                _storedAngularVelocity = 0f;
+            }
+
             HandleMovement();
             HandleRotation();
+        }
+        else
+        {
+            if (_playerRb.linearVelocity != Vector2.zero || _playerRb.angularVelocity != 0f)
+            {
+                _storedVelocity = _playerRb.linearVelocity;
+                _storedAngularVelocity = _playerRb.angularVelocity;
+
+                _playerRb.linearVelocity = Vector2.zero;
+                _playerRb.angularVelocity = 0f;
+            }
         }
     }
 

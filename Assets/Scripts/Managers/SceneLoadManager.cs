@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour
 {
-    // Singleton örneği
     public static SceneLoadManager Instance { get; private set; }
 
     private void Awake()
@@ -30,23 +29,13 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadGameScene()
     {
+        Debug.Log("GameScene Loaded!!");
+        GameManager.Instance.ChangeGameStatus(true);
         SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
     }
 
     public void LoadSceneByName(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
-
-    public void LoadNextLevel()
-    {
-        LevelManager lm = FindFirstObjectByType<LevelManager>();
-
-        if (lm != null)
-        {
-            lm.SetNextLevel();
-        }
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

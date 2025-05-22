@@ -1,10 +1,11 @@
 using UnityEngine;
 using System;
+using UnityEditor.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public bool IsGameActive = true;
+    public bool IsGameActive { get; private set; } = true;
     public float PlayerMaxHealth { get; private set; } = 100f;
     public float PlayerMaxShield { get; private set; } = 50f;
     public int PlayerDamage { get; private set; } = 20;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     private bool _isGameOver;
     private int _playerMoney;
 
+    public PlayerData PlayerData = new PlayerData();
     public event Action OnGameOver;
     public event Action OnPause;
     public event Action OnResume;
@@ -31,11 +33,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Debug.Log("Player Money is:" + GetPlayerMoney());
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            AddMoney(10000);
+            Debug.Log("Money Added");
         }
     }
 
@@ -79,6 +92,12 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
 
         OnGameOver?.Invoke();
+    }
+
+    public void ChangeGameStatus(bool gameStatus)
+    {
+        IsGameActive = gameStatus;
+        Debug.Log("Is Game Active Now: " + IsGameActive);
     }
 
     public void LoadPlayerMoney()

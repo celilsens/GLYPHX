@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class LevelData : ScriptableObject
 {
     public string levelName;
-    public int levelIndex;
     public List<EnemySpawnInfo> enemySpawns;
 }
 

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
+  m_Name: 03-HealthRegen
+  m_EditorClassIdentifier: 
+  upgradeName: Health Regen
+  category: 1
+  cost: 500
+  effectType: 0
+  effectValue: 1
+  isRepeatable: 1
+  maxPurchaseCount: 10
+  costGrowthFactor: 3

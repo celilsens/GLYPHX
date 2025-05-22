@@ -46,16 +46,19 @@ public class GameSceneUIManager : MonoBehaviour
         {
             _playerManager = _playerObject.GetComponent<Player>();
         }
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnGameOver += HandleGameOver;
             GameManager.Instance.OnPause += ShowSettingsUI;
             GameManager.Instance.OnResume += HideSettingsUI;
         }
+
         if (_levelManager != null)
         {
             _levelManager.OnLevelCompleted += ShowWinUI;
         }
+
         PrepareUI();
         UpdateUI();
     }
@@ -71,6 +74,7 @@ public class GameSceneUIManager : MonoBehaviour
         {
             float targetHealthFill = Mathf.Clamp01(_playerManager.CurrentPlayerHealth / _playerManager.MaxPlayerHealth);
             float targetShieldFill = Mathf.Clamp01(_playerManager.CurrentPlayerShield / _playerManager.MaxPlayerShield);
+
             if (_healthBarFillImage != null)
             {
                 if (!Mathf.Approximately(_healthBarFillImage.fillAmount, targetHealthFill))
@@ -79,6 +83,7 @@ public class GameSceneUIManager : MonoBehaviour
                     _healthBarFillImage.DOFillAmount(targetHealthFill, 0.5f).SetEase(Ease.OutCubic);
                 }
             }
+
             if (_shieldBarFillImage != null)
             {
                 if (!Mathf.Approximately(_shieldBarFillImage.fillAmount, targetShieldFill))
@@ -106,10 +111,12 @@ public class GameSceneUIManager : MonoBehaviour
         {
             _winUI.transform.localScale = Vector3.zero;
         }
+
         if (_loseUI != null)
         {
             _loseUI.transform.localScale = Vector3.zero;
         }
+
         if (_settingsUI != null)
         {
             _settingsUI.transform.localScale = Vector3.zero;
@@ -118,12 +125,12 @@ public class GameSceneUIManager : MonoBehaviour
         _blackBackgroundOverlay.SetActive(false);
         _redBackgroundOverlay.SetActive(false);
 
-        _winUIRestartButton?.onClick.AddListener(WinUIRestart);
-        _winUIHangarButton?.onClick.AddListener(WinUIHangar);
+        _winUIRestartButton?.onClick.AddListener(RestartGame);
+        _winUIHangarButton?.onClick.AddListener(GoToHangar);
         _winUINextLevelButton?.onClick.AddListener(WinUINextLevel);
 
-        _loseUIRestartButton?.onClick.AddListener(LoseUIRestart);
-        _loseUIHangarButton?.onClick.AddListener(LoseUIHangar);
+        _loseUIRestartButton?.onClick.AddListener(RestartGame);
+        _loseUIHangarButton?.onClick.AddListener(GoToHangar);
 
         _settingsUIOpenButton?.onClick.AddListener(GameManager.Instance.PauseGame);
         _settingsUICloseButton?.onClick.AddListener(GameManager.Instance.ResumeGame);
@@ -137,11 +144,13 @@ public class GameSceneUIManager : MonoBehaviour
 
     private void ShowWinUI()
     {
+        GameManager.Instance.ChangeGameStatus(false);
+
         _blackBackgroundOverlay.SetActive(true);
 
         if (_winUIMoneyText != null)
         {
-            _winUIMoneyText.text = "You Gained: " + GameManager.Instance.GetPlayerMoney();
+            _winUIMoneyText.text = "Total Money: " + GameManager.Instance.GetPlayerMoney().ToString();
         }
 
         if (_winUI != null)
@@ -152,14 +161,18 @@ public class GameSceneUIManager : MonoBehaviour
 
     private void ShowLoseUI()
     {
+        GameManager.Instance.ChangeGameStatus(false);
+
         if (GameManager.Instance != null)
         {
             if (_loseUIMoneyText != null)
             {
-                _loseUIMoneyText.text = "You Gained: " + GameManager.Instance.GetPlayerMoney();
+                _loseUIMoneyText.text = "You Gained: " + GameManager.Instance.GetPlayerMoney().ToString();
             }
         }
+
         _redBackgroundOverlay.SetActive(true);
+
         if (_loseUI != null)
         {
             _loseUI.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
@@ -184,28 +197,28 @@ public class GameSceneUIManager : MonoBehaviour
         }
     }
 
-    private void WinUIRestart()
+    private void RestartGame()
     {
         SceneLoadManager.Instance.LoadGameScene();
     }
 
-    private void WinUIHangar()
+    private void GoToHangar()
     {
         SceneLoadManager.Instance.LoadHangarScene();
     }
 
     private void WinUINextLevel()
     {
-        SceneLoadManager.Instance.LoadNextLevel();
-    }
+        if (_levelManager != null)
+        {
+            _levelManager.UnlockNextLevel();
 
-    private void LoseUIRestart()
-    {
+            int nextLevelIndex = LevelManager.currentLevelIndex + 1;
+            PlayerPrefs.SetInt("SelectedLevel", nextLevelIndex);
+            PlayerPrefs.Save();
+        }
+
         SceneLoadManager.Instance.LoadGameScene();
     }
 
-    private void LoseUIHangar()
-    {
-        SceneLoadManager.Instance.LoadHangarScene();
-    }
 }

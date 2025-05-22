@@ -1,32 +1,39 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
-    public LevelData currentLevelData;
-    public LevelData[] allLevels;
+    [SerializeField] private LevelData currentLevelData;
+    [SerializeField] private LevelData[] allLevels;
 
+    [SerializeField] private Vector2 spawnAreaMin = new Vector2(-26, -26);
+    [SerializeField] private Vector2 spawnAreaMax = new Vector2(26, 26);
 
-    public Vector2 spawnAreaMin = new Vector2(-26, -26);
-    public Vector2 spawnAreaMax = new Vector2(26, 26);
+    [SerializeField] private float initialSpawnDelay = 0.5f;
+    [SerializeField] private float spawnInterval = 0.3f;
+    [SerializeField] private float forbiddenRange = 8f;
+    private List<Vector2> _usedSpawnPositions = new List<Vector2>();
+    private float minDistanceBetweenEnemies = 2f;
 
-    public float initialSpawnDelay = 0.5f;
-    public float spawnInterval = 0.3f;
-    public float forbiddenRange = 7f;
-
-    public static int currentLevelIndex = 0;
     private int _totalEnemiesSpawned;
     private int _enemiesDefeated;
 
+    public static int currentLevelIndex = 0;
+
     public System.Action OnLevelCompleted;
+
+
 
     void Start()
     {
         currentLevelIndex = PlayerPrefs.GetInt("SelectedLevel", 0);
+
         if (allLevels != null && allLevels.Length > 0 && currentLevelIndex < allLevels.Length)
         {
             currentLevelData = allLevels[currentLevelIndex];
         }
+
         StartCoroutine(SpawnEnemies());
     }
 
@@ -42,6 +49,8 @@ public class LevelManager : MonoBehaviour
 
         _totalEnemiesSpawned = 0;
         _enemiesDefeated = 0;
+
+        _usedSpawnPositions.Clear();
 
         foreach (EnemySpawnInfo enemyInfo in currentLevelData.enemySpawns)
         {
@@ -78,36 +87,59 @@ public class LevelManager : MonoBehaviour
 
     private void LevelCompleted()
     {
-        Debug.Log("Level Completed!");
+        Debug.Log(currentLevelIndex + "Level Completed!");
         OnLevelCompleted?.Invoke();
+        UnlockNextLevel();
     }
 
     Vector2 GetValidSpawnPosition()
     {
         Vector2 position;
-
         int maxAttempts = 100;
         int attempt = 0;
 
         do
         {
-            position = new Vector2(Random.Range(spawnAreaMin.x, spawnAreaMax.x), Random.Range(spawnAreaMin.y, spawnAreaMax.y));
+            position = new Vector2(
+                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+                Random.Range(spawnAreaMin.y, spawnAreaMax.y)
+            );
+
             attempt++;
             if (attempt > maxAttempts)
             {
-                Debug.LogWarning("Valid Position is not found. Using current position.");
+                Debug.LogWarning("Uygun spawn pozisyonu bulunamadı. Son üretilen pozisyon kullanılacak.");
                 break;
             }
         }
-        while (IsInsideForbiddenZone(position));
+        while (
+            IsInsideForbiddenZone(position) ||
+            IsTooCloseToOtherEnemies(position)
+        );
 
+        _usedSpawnPositions.Add(position);
         return position;
     }
 
+
     bool IsInsideForbiddenZone(Vector2 position)
     {
-        return position.x > -forbiddenRange && position.x < forbiddenRange && position.y > -forbiddenRange && position.y < forbiddenRange;
+        return position.x > -forbiddenRange && position.x < forbiddenRange &&
+               position.y > -forbiddenRange && position.y < forbiddenRange;
     }
+
+    bool IsTooCloseToOtherEnemies(Vector2 position)
+    {
+        foreach (Vector2 usedPos in _usedSpawnPositions)
+        {
+            if (Vector2.Distance(position, usedPos) < minDistanceBetweenEnemies)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void SetNextLevel()
     {
@@ -116,6 +148,35 @@ public class LevelManager : MonoBehaviour
         if (currentLevelIndex < allLevels.Length)
         {
             currentLevelData = allLevels[currentLevelIndex];
+        }
+    }
+
+    public void UnlockNextLevel()
+    {
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 0);
+        int nextLevel = unlockedLevel + 1;
+
+        if (nextLevel < allLevels.Length)
+        {
+            PlayerPrefs.SetInt("UnlockedLevel", nextLevel);
+            PlayerPrefs.Save();
+            Debug.Log("Yeni Seviye Açıldı: " + nextLevel);
+        }
+    }
+
+    public void LoadNextLevel()
+    {
+        int nextLevel = currentLevelIndex + 1;
+
+        if (nextLevel < allLevels.Length)
+        {
+            PlayerPrefs.SetInt("SelectedLevel", nextLevel);
+            PlayerPrefs.Save();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            Debug.Log("Tüm seviyeler tamamlandı!");
         }
     }
 }

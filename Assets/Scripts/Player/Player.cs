@@ -15,8 +15,8 @@ public class Player : MonoBehaviour, IDamageable
         MaxPlayerShield = gm.PlayerMaxShield;
         CurrentPlayerHealth = MaxPlayerHealth;
         CurrentPlayerShield = MaxPlayerShield;
-    }
 
+    }
 
     public void TakeDamage(float damage)
     {
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         Debug.Log("Player Dead");
 
-        GameManager.Instance.IsGameActive = false;
+        GameManager.Instance.ChangeGameStatus(false);
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -90,13 +90,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             TakeDamage(50f);
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Boundary"))
+        if (collision.CompareTag("Boundary"))
         {
-            //Die();
+            TakeDamage(500000f);
         }
     }
+
 }

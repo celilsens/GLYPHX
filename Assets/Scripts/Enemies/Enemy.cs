@@ -36,8 +36,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("Enemy Dead");
-
         OnEnemyDeath?.Invoke();
 
         foreach (var collider in GetComponents<Collider2D>())
@@ -57,6 +55,7 @@ public class Enemy : MonoBehaviour, IDamageable
             effect.Play();
             StartCoroutine(WaitForEffectToEnd(effect));
         }
+
         else
         {
             GameManager.Instance.AddMoney(_rewardAmount);
@@ -81,7 +80,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log(gameObject.name + ": Took Damage." + "Current Health: " + _currentHealth);
+            //Debug.Log(gameObject.name + ": Took Damage." + "Current Health: " + _currentHealth);
             TakeDamage(GameManager.Instance.PlayerDamage);
             Destroy(other.gameObject);
         }

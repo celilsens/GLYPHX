@@ -5019,12 +5019,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6592754286038039978}
+  - component: {fileID: 2946552002551669875}
   - component: {fileID: 5930248764297272629}
   - component: {fileID: -1154829686408670237}
   - component: {fileID: -5049445498595620681}
   m_Layer: 0
   m_Name: Glyphx_Hexagon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5047,6 +5048,19 @@ Transform:
   - {fileID: 6474500430973749762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2946552002551669875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8511605990770807530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749ca53071699354d85203db9f6afac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2
 --- !u!114 &5930248764297272629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5132,10 +5146,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &8912608844878632503
 GameObject:
   m_ObjectHideFlags: 0
