@@ -1,14 +1,29 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewUpgradeData", menuName = "Upgrade/Upgrade Data")]
+public enum UpgradeCategory
+{
+    Attack,
+    Defence,
+    Skill,
+    Extra
+}
+
+[CreateAssetMenu(fileName = "NewUpgrade", menuName = "Upgrades/UpgradeData")]
+
 public class UpgradeData : ScriptableObject
 {
-    public string upgradeName;
+    [Header("Upgrade Settings")]
     public UpgradeCategory category;
-    public int cost;
-    public UpgradeEffectType effectType;
-    public float effectValue;
-    public bool isRepeatable;
-    public int maxPurchaseCount = 10;
-    public float costGrowthFactor = 2;
+    public string upgradeName;
+    public string key;
+    public float effectAmount = 0f;
+
+    [Header("Purchase Settings")]
+    public bool isRepeatable = false;
+    public int maxPurchaseCount = 1;
+    public float baseCost = 100f;
+    public float costGrowthFactor = 1.5f;
+
+    [Header("Requirements")]
+    public string requiredKey;
 }

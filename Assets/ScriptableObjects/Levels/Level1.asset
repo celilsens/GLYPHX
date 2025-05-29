@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c75fda66df10ab4fb5cdccfcf813c41, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
+  levelNumber: 1
   levelName: Level 1
-  levelIndex: 1
   enemySpawns:
   - enemyPrefab: {fileID: 7545824832833917023, guid: f36074dd3fc86c54c8ad36c007b882c3, type: 3}
     count: 1

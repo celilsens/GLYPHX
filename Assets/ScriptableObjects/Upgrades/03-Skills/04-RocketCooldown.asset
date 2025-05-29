@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
   m_Name: 04-RocketCooldown
   m_EditorClassIdentifier: 
-  upgradeName: Rocket Cooldown
   category: 2
-  cost: 500
-  effectType: 0
-  effectValue: 5
+  upgradeName: Rocket Cooldown
+  key: RocketCooldown
+  effectAmount: 10
   isRepeatable: 1
-  maxPurchaseCount: 5
-  costGrowthFactor: 3
+  maxPurchaseCount: 10
+  baseCost: 1000
+  costGrowthFactor: 1.5
+  requiredKey: Rocket

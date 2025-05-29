@@ -169,7 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749ca53071699354d85203db9f6afac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  moveSpeed: 3
+  separationDistance: 1.5
+  separationStrength: 1.5
 --- !u!114 &2060999539042106893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7e48aa21edfa34599c6dcdba8d75e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardAmount: 10
+  _rewardAmount: 350
   _maxHealth: 100
   _currentHealth: 0
   _fillTransform: {fileID: 9195123659163142825}

@@ -1,19 +1,22 @@
 using UnityEngine;
 using System;
-using UnityEditor.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
     public bool IsGameActive { get; private set; } = true;
-    public float PlayerMaxHealth { get; private set; } = 100f;
-    public float PlayerMaxShield { get; private set; } = 50f;
-    public int PlayerDamage { get; private set; } = 20;
 
+    [Header("Level Data")]
+    [SerializeField] private LevelData[] _allLevels;
+    public LevelData[] AllLevels => _allLevels;
+    public LevelData SelectedLevelData { get; private set; }
+
+    private float _playerMoney;
+    private int _unlockedLevel;
+    private int _selectedLevelIndex;
     private bool _isGameOver;
-    private int _playerMoney;
 
-    public PlayerData PlayerData = new PlayerData();
     public event Action OnGameOver;
     public event Action OnPause;
     public event Action OnResume;
@@ -24,100 +27,82 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadPlayerMoney();
-            LoadPlayerStats();
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
-    }
 
-    private void Start()
-    {
-        Debug.Log("Player Money is:" + GetPlayerMoney());
+        LoadPlayerMoney();
+        _unlockedLevel = PlayerPrefs.GetInt(Consts.PlyrPrfs.UNLOCKED_LEVEL, 0);
+        _selectedLevelIndex = PlayerPrefs.GetInt(Consts.PlyrPrfs.SELECTED_LEVEL, 0);
+
+        if (_allLevels == null || _allLevels.Length == 0)
+        {
+            _allLevels = Resources.LoadAll<LevelData>("Levels");
+            if (_allLevels == null || _allLevels.Length == 0)
+            {
+                Debug.LogError("All Levels is NULL!!!");
+                return;
+            }
+        }
+
+        _selectedLevelIndex = Mathf.Clamp(_selectedLevelIndex, 0, _allLevels.Length - 1);
+        SelectedLevelData = _allLevels[_selectedLevelIndex];
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePause();
-        }
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            AddMoney(10000);
-            Debug.Log("Money Added");
-        }
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) TogglePause();
+        if (Input.GetKeyDown(KeyCode.U)) AddMoney(10000);
     }
 
+    #region Game State
     private void TogglePause()
     {
         if (_isGameOver) return;
 
-        if (IsGameActive)
-        {
-            PauseGame();
-        }
-        else
-        {
-            ResumeGame();
-        }
+        if (IsGameActive) PauseGame();
+        else ResumeGame();
     }
 
     public void PauseGame()
     {
-        Debug.Log("Game Paused");
-
         IsGameActive = false;
-
         OnPause?.Invoke();
     }
 
     public void ResumeGame()
     {
-        Debug.Log("Game Resumed");
-
         IsGameActive = true;
-
         OnResume?.Invoke();
     }
 
     public void GameOver()
     {
-        Debug.Log("Game Over!!!");
-
         IsGameActive = false;
         _isGameOver = true;
-
         OnGameOver?.Invoke();
     }
 
-    public void ChangeGameStatus(bool gameStatus)
-    {
-        IsGameActive = gameStatus;
-        Debug.Log("Is Game Active Now: " + IsGameActive);
-    }
+    public void ChangeGameStatus(bool gameStatus) => IsGameActive = gameStatus;
+    #endregion
 
-    public void LoadPlayerMoney()
-    {
-        _playerMoney = PlayerPrefs.GetInt("PlayerMoney", 0);
-    }
+    #region Money
+    public float GetMoney() => _playerMoney;
 
-    public void SavePlayerMoney()
-    {
-        PlayerPrefs.SetInt("PlayerMoney", _playerMoney);
-        PlayerPrefs.Save();
-    }
+    public string GetMoneyString() => Mathf.FloorToInt(_playerMoney).ToString();
 
-    public void AddMoney(int amount)
+    public void LoadPlayerMoney() => _playerMoney = PlayerPrefs.GetFloat(Consts.PlyrPrfs.PLAYER_MONEY, 0f);
+
+    public void AddMoney(float amount)
     {
         _playerMoney += amount;
         SavePlayerMoney();
     }
 
-    public bool SpendMoney(int amount)
+    public bool SpendMoney(float amount)
     {
         if (_playerMoney >= amount)
         {
@@ -128,33 +113,38 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public int GetPlayerMoney()
+    public void SavePlayerMoney()
     {
-        return _playerMoney;
+        PlayerPrefs.SetFloat(Consts.PlyrPrfs.PLAYER_MONEY, _playerMoney);
+        PlayerPrefs.Save();
     }
+    #endregion
 
-    public void LoadPlayerStats()
-    {
-        PlayerMaxHealth = PlayerPrefs.GetFloat("PlayerMaxHealth", 100f);
-        PlayerMaxShield = PlayerPrefs.GetFloat("PlayerMaxShield", 50f);
-    }
+    #region Level
+    public int GetMaxUnlockedLevel() => _unlockedLevel;
 
-    public void SavePlayerStats()
+    public void UnlockNewLevel()
     {
-        PlayerPrefs.SetFloat("PlayerMaxHealth", PlayerMaxHealth);
-        PlayerPrefs.SetFloat("PlayerMaxShield", PlayerMaxShield);
+        _unlockedLevel++;
+        PlayerPrefs.SetInt(Consts.PlyrPrfs.UNLOCKED_LEVEL, _unlockedLevel);
         PlayerPrefs.Save();
     }
 
-    public void UpgradePlayerHealth(float additionalHealth)
+    public void SetSelectedLevel(int index)
     {
-        PlayerMaxHealth += additionalHealth;
-        SavePlayerStats();
+        if (_allLevels == null || _allLevels.Length == 0)
+        {
+            Debug.LogError("AllLevels null!! SetSelectedLevel doesnt work! .");
+            return;
+        }
+
+        _selectedLevelIndex = Mathf.Clamp(index, 0, _allLevels.Length - 1);
+        SelectedLevelData = _allLevels[_selectedLevelIndex];
+
+        PlayerPrefs.SetInt(Consts.PlyrPrfs.SELECTED_LEVEL, _selectedLevelIndex);
+        PlayerPrefs.Save();
     }
 
-    public void UpgradePlayerShield(float additionalShield)
-    {
-        PlayerMaxShield += additionalShield;
-        SavePlayerStats();
-    }
+    public int GetSelectedLevelIndex() => _selectedLevelIndex;
+    #endregion
 }

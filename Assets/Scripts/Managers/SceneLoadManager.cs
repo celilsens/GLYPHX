@@ -29,7 +29,6 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadGameScene()
     {
-        Debug.Log("GameScene Loaded!!");
         GameManager.Instance.ChangeGameStatus(true);
         SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
     }

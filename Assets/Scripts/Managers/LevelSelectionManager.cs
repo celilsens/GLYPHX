@@ -1,39 +1,67 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelSelectionManager : MonoBehaviour
 {
-    public LevelData[] allLevels;
-    public GameObject levelButtonPrefab;
-    public Transform buttonContainer;
-    public int unlockedLevel; 
+    [Header("UI")]
+    [SerializeField] private GameObject levelButtonPrefab;
+    [SerializeField] private Transform buttonContainer;
+    private TMP_Text _levelNameText;
 
-    void Start()
+    private void Start()
     {
-        unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 0);
-        for(int i = 0; i < allLevels.Length; i++)
+        GenerateLevelButtons();
+    }
+
+    private void GenerateLevelButtons()
+    {
+        if (GameManager.Instance == null || GameManager.Instance.AllLevels == null)
+        {
+            Debug.LogError("GameManager ya da AllLevels null!");
+            return;
+        }
+
+        var levels = GameManager.Instance.AllLevels;
+        int unlockedLevel = GameManager.Instance.GetMaxUnlockedLevel();
+
+        for (int i = 0; i < levels.Length; i++)
         {
             GameObject buttonObj = Instantiate(levelButtonPrefab, buttonContainer);
-            TMP_Text buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
-            buttonText.text = allLevels[i].levelName;
-            Button buttonComp = buttonObj.GetComponent<Button>();
-            if(i > unlockedLevel)
+
+            _levelNameText = buttonObj.GetComponentInChildren<TMP_Text>();
+
+            if (_levelNameText != null)
             {
-                buttonComp.interactable = false;
+                _levelNameText.text = levels[i].levelNumber;
+            }
+            else
+            {
+                Debug.LogWarning("LevelName is not in Level prefab.");
+            }
+
+            Button button = buttonObj.GetComponentInChildren<Button>();
+            if (i > unlockedLevel)
+            {
+                button.interactable = false;
+                _levelNameText.color = Color.red;
             }
             else
             {
                 int index = i;
-                buttonComp.onClick.AddListener(() => LoadLevel(index));
+                button.onClick.AddListener(() =>
+                {
+                    Debug.Log("Button clicked: LevelIndex = " + index);
+                    SelectLevel(index);
+                });
             }
         }
     }
 
-    void LoadLevel(int levelIndex)
+
+    private void SelectLevel(int levelIndex)
     {
-        PlayerPrefs.SetInt("SelectedLevel", levelIndex);
-        SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
+        GameManager.Instance.SetSelectedLevel(levelIndex);
+        SceneLoadManager.Instance.LoadGameScene();
     }
 }

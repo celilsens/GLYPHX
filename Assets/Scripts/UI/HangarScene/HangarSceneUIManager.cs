@@ -1,72 +1,80 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class HangerSceneUIManager : MonoBehaviour
 {
-    [Header("Player UI")]
-    [SerializeField] private TMP_Text playerMoneyText;
 
-    [Header("Upgrade UI Elements")]
-    [SerializeField] private UpgradeItemUI[] upgradeItems;
-    [SerializeField] private UpgradeData[] upgrades;
+    [Header("Panels")]
+    [SerializeField] private GameObject _shopPanel;
+    [SerializeField] private GameObject _levelPanel;
+    [SerializeField] private float _panelAnimDuration = .25f;
 
-    private UpgradeManager _upgradeManager;
+    [Header("Buttons")]
+    [SerializeField] private Button _shopButton;
+    [SerializeField] private GameObject _shopIcon;
+    [SerializeField] private Button _levelsButton;
+    [SerializeField] private GameObject _levelsIcon;
+    [SerializeField] private Button _mainMenuButton;
+    [SerializeField] private GameObject _mainMenuIcon;
 
-    public UpgradeManager CurrentUpgradeManager => _upgradeManager;
-    public UpgradeData[] Upgrades => upgrades;
+    [SerializeField] private float scaleFactor = 1.1f;
+    [SerializeField] private float animationDuration = 0.3f;
 
     private void Start()
     {
-        _upgradeManager = new UpgradeManager(GameManager.Instance.PlayerData);
+        _shopPanel.transform.localScale = Vector3.one;
+        _levelPanel.transform.localScale = Vector3.zero;
+        SetupHoverEvents(_shopButton, _shopIcon);
+        SetupHoverEvents(_levelsButton, _levelsIcon);
+        SetupHoverEvents(_mainMenuButton, _mainMenuIcon);
 
-        UpdateUI();
+        _shopButton.onClick.AddListener(OpenShop);
+        _levelsButton.onClick.AddListener(OpenLevels);
+        _mainMenuButton.onClick.AddListener(SceneLoadManager.Instance.LoadMainMenuScene);
     }
 
-    public void UpdateUI()
+    private void OpenShop()
     {
-        UpdatePlayerMoneyDisplay();
-        UpdateUpgradesDisplay();
+        _shopPanel.transform.DOScale(Vector3.one, _panelAnimDuration).SetEase(Ease.OutBack);
+
+        _levelPanel.transform.DOScale(Vector3.zero, _panelAnimDuration).SetEase(Ease.InBack);
     }
 
-    private void UpdatePlayerMoneyDisplay()
+    private void OpenLevels()
     {
-        int money = GameManager.Instance.GetPlayerMoney();
-        playerMoneyText.text = money.ToString();
+        _levelPanel.transform.DOScale(Vector3.one, _panelAnimDuration).SetEase(Ease.OutBack);
+
+        _shopPanel.transform.DOScale(Vector3.zero, _panelAnimDuration).SetEase(Ease.InBack);
     }
 
-    private void UpdateUpgradesDisplay()
+    private void SetupHoverEvents(Button button, GameObject icon)
     {
-        int count = Mathf.Min(upgradeItems.Length, upgrades.Length);
-        for (int i = 0; i < count; i++)
+        EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = button.gameObject.AddComponent<EventTrigger>();
+
+        trigger.triggers = new System.Collections.Generic.List<EventTrigger.Entry>();
+
+        EventTrigger.Entry entryEnter = new EventTrigger.Entry
         {
-            UpgradeData upgrade = upgrades[i];
-            int purchaseCount = _upgradeManager.GetPurchaseCount(upgrade);
-            int effectiveCost = upgrade.isRepeatable ?
-                Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.costGrowthFactor, purchaseCount)) :
-                upgrade.cost;
+            eventID = EventTriggerType.PointerEnter
+        };
+        entryEnter.callback.AddListener((_) => ScaleIcon(icon, true));
+        trigger.triggers.Add(entryEnter);
 
-            upgradeItems[i].upgradeNameText.text = upgrade.upgradeName;
-            upgradeItems[i].upgradePriceText.text = "$ " + effectiveCost;
-        }
+        EventTrigger.Entry entryExit = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerExit
+        };
+        entryExit.callback.AddListener((_) => ScaleIcon(icon, false));
+        trigger.triggers.Add(entryExit);
     }
 
-    public void NotEnoughCurrency()
+    private void ScaleIcon(GameObject icon, bool enlarge)
     {
-        StartCoroutine(MoneyColorChange());
+        Vector3 targetScale = enlarge ? Vector3.one * scaleFactor : Vector3.one;
+        icon.transform.DOScale(targetScale, animationDuration).SetEase(Ease.OutBack);
     }
-    private IEnumerator MoneyColorChange()
-    {
-        playerMoneyText.color = Color.red;
-        yield return new WaitForSeconds(2f);
-        playerMoneyText.color = Color.white;
-    }
-}
-
-[System.Serializable]
-public class UpgradeItemUI
-{
-    public TMP_Text upgradeNameText;
-    public TMP_Text upgradePriceText;
 }

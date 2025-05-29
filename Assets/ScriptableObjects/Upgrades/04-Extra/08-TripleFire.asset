@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
-  m_Name: 08-TripleFire
+  m_Name: 08-Triplefire
   m_EditorClassIdentifier: 
-  upgradeName: TripleFire
   category: 3
-  cost: 500
-  effectType: 2
-  effectValue: 1
+  upgradeName: Triple Fire
+  key: TripleFire
+  effectAmount: 10
   isRepeatable: 0
-  maxPurchaseCount: 1
-  costGrowthFactor: 1
+  maxPurchaseCount: 2
+  baseCost: 1000
+  costGrowthFactor: 1.5
+  requiredKey: DoubleFire

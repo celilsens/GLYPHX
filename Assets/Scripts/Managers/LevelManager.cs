@@ -1,182 +1,79 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private LevelData currentLevelData;
-    [SerializeField] private LevelData[] allLevels;
+    private LevelData currentLevelData;
 
-    [SerializeField] private Vector2 spawnAreaMin = new Vector2(-26, -26);
-    [SerializeField] private Vector2 spawnAreaMax = new Vector2(26, 26);
+    [SerializeField] private Vector2 _spawnAreaMin = new Vector2(-26, -26);
+    [SerializeField] private Vector2 _spawnAreaMax = new Vector2(26, 26);
+    [SerializeField] private float _initialSpawnDelay = 0.5f;
+    [SerializeField] private float _spawnInterval = 0.3f;
 
-    [SerializeField] private float initialSpawnDelay = 0.5f;
-    [SerializeField] private float spawnInterval = 0.3f;
-    [SerializeField] private float forbiddenRange = 8f;
-    private List<Vector2> _usedSpawnPositions = new List<Vector2>();
-    private float minDistanceBetweenEnemies = 2f;
-
-    private int _totalEnemiesSpawned;
-    private int _enemiesDefeated;
-
-    public static int currentLevelIndex = 0;
+    private int _activeEnemyCount = 0;
+    private bool _spawningCompleted = false;
+    private bool _levelCompleted = false;
 
     public System.Action OnLevelCompleted;
 
-
-
-    void Start()
+    private void Start()
     {
-        currentLevelIndex = PlayerPrefs.GetInt("SelectedLevel", 0);
+        currentLevelData = GameManager.Instance.SelectedLevelData;
 
-        if (allLevels != null && allLevels.Length > 0 && currentLevelIndex < allLevels.Length)
+        if (currentLevelData == null)
         {
-            currentLevelData = allLevels[currentLevelIndex];
+            Debug.LogError("Selected LevelData null!");
+            return;
         }
 
         StartCoroutine(SpawnEnemies());
     }
 
-    IEnumerator SpawnEnemies()
+    private IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(initialSpawnDelay);
+        yield return new WaitForSeconds(_initialSpawnDelay);
+        _activeEnemyCount = 0;
 
-        if (currentLevelData == null)
-        {
-            Debug.LogWarning("Level Data is Null!!!");
-            yield break;
-        }
-
-        _totalEnemiesSpawned = 0;
-        _enemiesDefeated = 0;
-
-        _usedSpawnPositions.Clear();
-
-        foreach (EnemySpawnInfo enemyInfo in currentLevelData.enemySpawns)
+        foreach (var enemyInfo in currentLevelData.enemySpawns)
         {
             for (int i = 0; i < enemyInfo.count; i++)
             {
-                Vector2 spawnPosition = GetValidSpawnPosition();
-                GameObject enemyGO = Instantiate(enemyInfo.enemyPrefab, spawnPosition, Quaternion.identity);
-                _totalEnemiesSpawned++;
-                Enemy enemyComp = enemyGO.GetComponent<Enemy>();
+                Vector2 spawnPos = GetValidSpawnPosition();
+                GameObject enemy = Instantiate(enemyInfo.enemyPrefab, spawnPos, Quaternion.identity);
+                var enemyComp = enemy.GetComponent<Enemy>();
 
-                if (enemyComp != null)
-                {
-                    enemyComp.OnEnemyDeath += HandleEnemyDeath;
-                }
-                else
-                {
-                    Debug.LogWarning("Enemy component not found on spawned prefab");
-                }
-
-                yield return new WaitForSeconds(spawnInterval);
+                _activeEnemyCount++;
+                enemyComp.OnEnemyDeath += HandleEnemyDeath;
+                yield return new WaitForSeconds(_spawnInterval);
             }
         }
+
+        _spawningCompleted = true;
+
+        if (_activeEnemyCount <= 0) LevelCompleted();
     }
 
     private void HandleEnemyDeath()
     {
-        _enemiesDefeated++;
+        _activeEnemyCount--;
 
-        if (_enemiesDefeated >= _totalEnemiesSpawned)
-        {
-            LevelCompleted();
-        }
+        if (_spawningCompleted && _activeEnemyCount <= 0) LevelCompleted();
     }
 
     private void LevelCompleted()
     {
-        Debug.Log(currentLevelIndex + "Level Completed!");
+        if (_levelCompleted) return;
+        _levelCompleted = true;
+
+        GameManager.Instance.UnlockNewLevel();
         OnLevelCompleted?.Invoke();
-        UnlockNextLevel();
     }
 
-    Vector2 GetValidSpawnPosition()
+    private Vector2 GetValidSpawnPosition()
     {
-        Vector2 position;
-        int maxAttempts = 100;
-        int attempt = 0;
-
-        do
-        {
-            position = new Vector2(
-                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-                Random.Range(spawnAreaMin.y, spawnAreaMax.y)
-            );
-
-            attempt++;
-            if (attempt > maxAttempts)
-            {
-                Debug.LogWarning("Uygun spawn pozisyonu bulunamadı. Son üretilen pozisyon kullanılacak.");
-                break;
-            }
-        }
-        while (
-            IsInsideForbiddenZone(position) ||
-            IsTooCloseToOtherEnemies(position)
+        return new Vector2(
+            Random.Range(_spawnAreaMin.x, _spawnAreaMax.x),
+            Random.Range(_spawnAreaMin.y, _spawnAreaMax.y)
         );
-
-        _usedSpawnPositions.Add(position);
-        return position;
-    }
-
-
-    bool IsInsideForbiddenZone(Vector2 position)
-    {
-        return position.x > -forbiddenRange && position.x < forbiddenRange &&
-               position.y > -forbiddenRange && position.y < forbiddenRange;
-    }
-
-    bool IsTooCloseToOtherEnemies(Vector2 position)
-    {
-        foreach (Vector2 usedPos in _usedSpawnPositions)
-        {
-            if (Vector2.Distance(position, usedPos) < minDistanceBetweenEnemies)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public void SetNextLevel()
-    {
-        currentLevelIndex++;
-
-        if (currentLevelIndex < allLevels.Length)
-        {
-            currentLevelData = allLevels[currentLevelIndex];
-        }
-    }
-
-    public void UnlockNextLevel()
-    {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 0);
-        int nextLevel = unlockedLevel + 1;
-
-        if (nextLevel < allLevels.Length)
-        {
-            PlayerPrefs.SetInt("UnlockedLevel", nextLevel);
-            PlayerPrefs.Save();
-            Debug.Log("Yeni Seviye Açıldı: " + nextLevel);
-        }
-    }
-
-    public void LoadNextLevel()
-    {
-        int nextLevel = currentLevelIndex + 1;
-
-        if (nextLevel < allLevels.Length)
-        {
-            PlayerPrefs.SetInt("SelectedLevel", nextLevel);
-            PlayerPrefs.Save();
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-        }
-        else
-        {
-            Debug.Log("Tüm seviyeler tamamlandı!");
-        }
     }
 }

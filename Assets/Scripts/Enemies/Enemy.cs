@@ -5,12 +5,14 @@ using System;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int _rewardAmount = 10;
+    [SerializeField] private float _rewardAmount = 100f;
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private float _currentHealth;
     [SerializeField] private Transform _fillTransform;
 
     public event Action OnEnemyDeath;
+
+    private bool isDead = false;
 
     private void Start()
     {
@@ -20,7 +22,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
+
         _currentHealth -= damage;
+
         if (_currentHealth > 0)
         {
             float targetScale = _currentHealth / _maxHealth;
@@ -36,17 +41,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        OnEnemyDeath?.Invoke();
+        if (isDead) return;
+        isDead = true;
 
         foreach (var collider in GetComponents<Collider2D>())
-        {
             collider.enabled = false;
-        }
 
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
-        {
             sr.enabled = false;
-        }
 
         ParticleSystem effect = GetComponentInChildren<ParticleSystem>();
 
@@ -55,18 +57,23 @@ public class Enemy : MonoBehaviour, IDamageable
             effect.Play();
             StartCoroutine(WaitForEffectToEnd(effect));
         }
-
         else
         {
-            GameManager.Instance.AddMoney(_rewardAmount);
-            Destroy(gameObject);
+            DestroyEnemy();
         }
     }
 
     private IEnumerator WaitForEffectToEnd(ParticleSystem effect)
     {
         yield return new WaitWhile(() => effect.isPlaying);
+        DestroyEnemy();
+    }
+
+    private void DestroyEnemy()
+    {
         GameManager.Instance.AddMoney(_rewardAmount);
+        OnEnemyDeath?.Invoke();
+        OnEnemyDeath = null;
         Destroy(gameObject);
     }
 
@@ -78,10 +85,12 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (isDead) return;
+
         if (other.CompareTag("Bullet"))
         {
-            //Debug.Log(gameObject.name + ": Took Damage." + "Current Health: " + _currentHealth);
-            TakeDamage(GameManager.Instance.PlayerDamage);
+            float damageTaken = StatManager.Instance.GetFloatStat(Consts.Upgrades.BASE_DAMAGE) * StatManager.Instance.GetFloatStat(Consts.Upgrades.DAMAGE_MULTIPLIER);
+            TakeDamage(damageTaken);
             Destroy(other.gameObject);
         }
     }

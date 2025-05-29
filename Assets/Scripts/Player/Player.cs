@@ -10,12 +10,28 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        GameManager gm = GameManager.Instance;
-        MaxPlayerHealth = gm.PlayerMaxHealth;
-        MaxPlayerShield = gm.PlayerMaxShield;
+        StartCoroutine(WaitAndLoadStats());
+
+        Debug.Log("Player Health is: " + MaxPlayerHealth);
+        Debug.Log("Player Shield is: " + MaxPlayerShield);
+    }
+
+    private void LoadStatsFromStatManager()
+    {
+        MaxPlayerHealth = StatManager.Instance.GetFloatStat(Consts.Upgrades.BASE_HEALTH) * StatManager.Instance.GetFloatStat(Consts.Upgrades.HEALTH_MULTIPLIER);
         CurrentPlayerHealth = MaxPlayerHealth;
+
+        MaxPlayerShield = StatManager.Instance.GetFloatStat(Consts.Upgrades.BASE_SHIELD) * StatManager.Instance.GetFloatStat(Consts.Upgrades.SHIELD_MULTIPLIER);
         CurrentPlayerShield = MaxPlayerShield;
 
+    }
+
+    private IEnumerator WaitAndLoadStats()
+    {
+        yield return new WaitUntil(() => StatManager.Instance != null);
+
+        LoadStatsFromStatManager();
+        Debug.Log("Player Health is: " + MaxPlayerHealth);
     }
 
     public void TakeDamage(float damage)
@@ -49,8 +65,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("Player Dead");
-
         GameManager.Instance.ChangeGameStatus(false);
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

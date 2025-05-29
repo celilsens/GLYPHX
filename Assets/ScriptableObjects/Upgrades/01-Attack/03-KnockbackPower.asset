@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
   m_Name: 03-KnockbackPower
   m_EditorClassIdentifier: 
-  upgradeName: Knockback Power
   category: 0
-  cost: 500
-  effectType: 0
-  effectValue: 10
+  upgradeName: Knockback Power
+  key: KnockbackPower
+  effectAmount: 10
   isRepeatable: 1
   maxPurchaseCount: 10
-  costGrowthFactor: 3
+  baseCost: 103
+  costGrowthFactor: 1.5
+  requiredKey: 

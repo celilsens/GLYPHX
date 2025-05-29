@@ -2,12 +2,12 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class GameSceneUIManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _playerObject;
-    [SerializeField] private LevelManager _levelManager;
 
     [Header("UI Elements")]
     [SerializeField] private Image _healthBarFillImage;
@@ -25,6 +25,8 @@ public class GameSceneUIManager : MonoBehaviour
     [SerializeField] private Button _winUIHangarButton;
     [SerializeField] private Button _winUINextLevelButton;
     [SerializeField] private TMP_Text _winUIMoneyText;
+    [SerializeField] private GameObject _winUINextLevel;
+    [SerializeField] private GameObject _winUIComplate;
 
     [Header("Lose UI Elements")]
     [SerializeField] private Button _loseUIRestartButton;
@@ -54,9 +56,11 @@ public class GameSceneUIManager : MonoBehaviour
             GameManager.Instance.OnResume += HideSettingsUI;
         }
 
-        if (_levelManager != null)
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+
+        if (levelManager != null)
         {
-            _levelManager.OnLevelCompleted += ShowWinUI;
+            levelManager.OnLevelCompleted += ShowWinUI;
         }
 
         PrepareUI();
@@ -72,8 +76,14 @@ public class GameSceneUIManager : MonoBehaviour
     {
         if (_playerManager != null)
         {
-            float targetHealthFill = Mathf.Clamp01(_playerManager.CurrentPlayerHealth / _playerManager.MaxPlayerHealth);
-            float targetShieldFill = Mathf.Clamp01(_playerManager.CurrentPlayerShield / _playerManager.MaxPlayerShield);
+            float targetHealthFill = 1f;
+            float targetShieldFill = 1f;
+
+            if (_playerManager.MaxPlayerHealth > 0f)
+                targetHealthFill = Mathf.Clamp01(_playerManager.CurrentPlayerHealth / _playerManager.MaxPlayerHealth);
+
+            if (_playerManager.MaxPlayerShield > 0f)
+                targetShieldFill = Mathf.Clamp01(_playerManager.CurrentPlayerShield / _playerManager.MaxPlayerShield);
 
             if (_healthBarFillImage != null)
             {
@@ -95,6 +105,7 @@ public class GameSceneUIManager : MonoBehaviour
         }
     }
 
+
     private void OnDisable()
     {
         if (GameManager.Instance != null)
@@ -107,20 +118,9 @@ public class GameSceneUIManager : MonoBehaviour
 
     private void PrepareUI()
     {
-        if (_winUI != null)
-        {
-            _winUI.transform.localScale = Vector3.zero;
-        }
-
-        if (_loseUI != null)
-        {
-            _loseUI.transform.localScale = Vector3.zero;
-        }
-
-        if (_settingsUI != null)
-        {
-            _settingsUI.transform.localScale = Vector3.zero;
-        }
+        if (_winUI != null) _winUI.transform.localScale = Vector3.zero;
+        if (_loseUI != null) _loseUI.transform.localScale = Vector3.zero;
+        if (_settingsUI != null) _settingsUI.transform.localScale = Vector3.zero;
 
         _blackBackgroundOverlay.SetActive(false);
         _redBackgroundOverlay.SetActive(false);
@@ -145,34 +145,39 @@ public class GameSceneUIManager : MonoBehaviour
     private void ShowWinUI()
     {
         GameManager.Instance.ChangeGameStatus(false);
-
         _blackBackgroundOverlay.SetActive(true);
 
         if (_winUIMoneyText != null)
         {
-            _winUIMoneyText.text = "Total Money: " + GameManager.Instance.GetPlayerMoney().ToString();
+            _winUIMoneyText.text = "Total Money: " + GameManager.Instance.GetMoneyString();
         }
 
-        if (_winUI != null)
+        int currentLevel = GameManager.Instance.GetSelectedLevelIndex();
+        int totalLevels = GameManager.Instance.AllLevels.Length;
+
+        if (currentLevel >= totalLevels - 1)
         {
-            _winUI.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
+            _winUINextLevel.SetActive(false);
+            _winUIComplate.SetActive(true);
         }
+        else
+        {
+            _winUINextLevel.SetActive(true);
+            _winUIComplate.SetActive(false);
+        }
+
+        _winUI.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
     }
 
     private void ShowLoseUI()
     {
         GameManager.Instance.ChangeGameStatus(false);
-
-        if (GameManager.Instance != null)
+        if (_loseUIMoneyText != null)
         {
-            if (_loseUIMoneyText != null)
-            {
-                _loseUIMoneyText.text = "You Gained: " + GameManager.Instance.GetPlayerMoney().ToString();
-            }
+            _loseUIMoneyText.text = "You Gained: " + GameManager.Instance.GetMoneyString();
         }
 
         _redBackgroundOverlay.SetActive(true);
-
         if (_loseUI != null)
         {
             _loseUI.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
@@ -197,6 +202,24 @@ public class GameSceneUIManager : MonoBehaviour
         }
     }
 
+    private void WinUINextLevel()
+    {
+        int currentLevel = GameManager.Instance.GetSelectedLevelIndex();
+        int maxUnlockedLevel = GameManager.Instance.GetMaxUnlockedLevel();
+
+        if (currentLevel < maxUnlockedLevel)
+        {
+            GameManager.Instance.SetSelectedLevel(currentLevel + 1);
+        }
+        else
+        {
+            _winUINextLevel.SetActive(false);
+            _winUIComplate.SetActive(true);
+        }
+
+        RestartGame();
+    }
+
     private void RestartGame()
     {
         SceneLoadManager.Instance.LoadGameScene();
@@ -206,19 +229,4 @@ public class GameSceneUIManager : MonoBehaviour
     {
         SceneLoadManager.Instance.LoadHangarScene();
     }
-
-    private void WinUINextLevel()
-    {
-        if (_levelManager != null)
-        {
-            _levelManager.UnlockNextLevel();
-
-            int nextLevelIndex = LevelManager.currentLevelIndex + 1;
-            PlayerPrefs.SetInt("SelectedLevel", nextLevelIndex);
-            PlayerPrefs.Save();
-        }
-
-        SceneLoadManager.Instance.LoadGameScene();
-    }
-
 }

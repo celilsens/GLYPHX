@@ -1,124 +1,93 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
-public class UpgradeManager
+public class UpgradeManager : MonoBehaviour
 {
-    private PlayerData _playerData;
+    public static UpgradeManager Instance { get; private set; }
 
-    private Dictionary<UpgradeData, int> _upgradePurchaseCounts = new Dictionary<UpgradeData, int>();
-
-    public UpgradeManager(PlayerData playerData)
+    private void Awake()
     {
-        _playerData = playerData;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-    public bool TryPurchaseUpgrade(UpgradeData upgrade)
+    public bool CanPurchase(UpgradeData data)
     {
-        int count;
-
-        if (_upgradePurchaseCounts.ContainsKey(upgrade))
+        if (!string.IsNullOrEmpty(data.requiredKey))
         {
-            count = _upgradePurchaseCounts[upgrade];
-        }
-        else
-        {
-            count = 0;
+            int requiredCount = PlayerPrefs.GetInt(GetPurchaseKey(data.requiredKey), 0);
+            if (requiredCount == 0)
+            {
+                return false;
+            }
         }
 
-        if (count >= upgrade.maxPurchaseCount)
+        int currentCount = GetCurrentPurchaseCount(data);
+        if (!data.isRepeatable && currentCount > 0)
         {
-            Debug.Log(upgrade.upgradeName + "'s Level is MAXED!!!");
             return false;
         }
 
-        int effectiveCost;
-
-        if (upgrade.isRepeatable)
+        if (currentCount >= data.maxPurchaseCount)
         {
-            float growth = Mathf.Pow(upgrade.costGrowthFactor, count);
-            effectiveCost = Mathf.RoundToInt(upgrade.cost * growth);
-        }
-        else
-        {
-            effectiveCost = upgrade.cost;
+            return false;
         }
 
-
-        if (GameManager.Instance.SpendMoney(effectiveCost))
+        float cost = CalculateCurrentCost(data, currentCount);
+        float money = GameManager.Instance.GetMoney();
+        if (money < cost)
         {
-            ApplyUpgrade(upgrade);
-
-            if (_upgradePurchaseCounts.ContainsKey(upgrade))
-                _upgradePurchaseCounts[upgrade]++;
-            else
-                _upgradePurchaseCounts.Add(upgrade, 1);
-
-            return true;
+            UpgradeUIManager.Instance?.FlashInsufficientFunds();
+            return false;
         }
-        return false;
+
+        return true;
     }
 
-    public int GetPurchaseCount(UpgradeData upgrade)
+    public bool TryPurchase(UpgradeData data)
     {
-        return _upgradePurchaseCounts.ContainsKey(upgrade) ? _upgradePurchaseCounts[upgrade] : 0;
+        if (!CanPurchase(data))
+            return false;
+
+        int currentCount = GetCurrentPurchaseCount(data);
+        float cost = CalculateCurrentCost(data, currentCount);
+
+        if (!GameManager.Instance.SpendMoney(cost))
+            return false;
+
+        var currentStat = StatManager.Instance.GetStat(data.key);
+        if (currentStat == null)
+            return false;
+
+        float newValue = currentStat.GetFloat() + data.effectAmount;
+        StatManager.Instance.SetStat(data.key, new StatValue(newValue));
+
+        PlayerPrefs.SetInt(GetPurchaseKey(data.key), currentCount + 1);
+        PlayerPrefs.Save();
+
+        return true;
     }
 
-    public void ApplyUpgrade(UpgradeData upgrade)
+
+
+    public float CalculateCurrentCost(UpgradeData data, int currentCount)
     {
-        string targetField = GetTargetFieldName(upgrade.upgradeName);
-        FieldInfo field = typeof(PlayerData).GetField(targetField, BindingFlags.Public | BindingFlags.Instance);
-        if (field == null)
-        {
-            Debug.LogWarning($"Field '{targetField}' not found in PlayerData.");
-            return;
-        }
-        switch (upgrade.effectType)
-        {
-            case UpgradeEffectType.StatBase:
-                ApplyFlatIncrease(field, upgrade.effectValue);
-                break;
-            case UpgradeEffectType.StatMultiple:
-                ApplyMultiplier(field, upgrade.effectValue);
-                break;
-            case UpgradeEffectType.Activate:
-                ApplyActivation(field);
-                break;
-            default:
-                Debug.LogWarning("Unknown upgrade effect type.");
-                break;
-        }
+        if (!data.isRepeatable) return data.baseCost;
+
+        return data.baseCost * Mathf.Pow(data.costGrowthFactor, currentCount);
     }
 
-    private void ApplyFlatIncrease(FieldInfo field, float value)
+    public int GetCurrentPurchaseCount(UpgradeData data)
     {
-        if (field.FieldType == typeof(float))
-        {
-            float current = (float)field.GetValue(_playerData);
-            field.SetValue(_playerData, current + value);
-        }
+        return PlayerPrefs.GetInt(GetPurchaseKey(data.key), 0);
     }
 
-    private void ApplyMultiplier(FieldInfo field, float multiplier)
+    private string GetPurchaseKey(string upgradeKey)
     {
-        if (field.FieldType == typeof(float))
-        {
-            float current = (float)field.GetValue(_playerData);
-            field.SetValue(_playerData, current * multiplier);
-        }
-    }
-
-    private void ApplyActivation(FieldInfo field)
-    {
-        if (field.FieldType == typeof(bool))
-        {
-            field.SetValue(_playerData, true);
-        }
-    }
-
-    private string GetTargetFieldName(string upgradeName)
-    {
-        return upgradeName.Replace(" ", "");
+        return $"upgrade_{upgradeKey}_count";
     }
 }

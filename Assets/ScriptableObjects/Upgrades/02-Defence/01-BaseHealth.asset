@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
   m_Name: 01-BaseHealth
   m_EditorClassIdentifier: 
-  upgradeName: Base Health
   category: 1
-  cost: 500
-  effectType: 0
-  effectValue: 25
+  upgradeName: Base Health
+  key: BaseHealth
+  effectAmount: 10
   isRepeatable: 1
   maxPurchaseCount: 10
-  costGrowthFactor: 2
+  baseCost: 109
+  costGrowthFactor: 1.5
+  requiredKey: 

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
   m_Name: 02-ShipSize
   m_EditorClassIdentifier: 
-  upgradeName: Ship Size
   category: 3
-  cost: 500
-  effectType: 0
-  effectValue: -0.2
+  upgradeName: Ship Size
+  key: ShipSize
+  effectAmount: 10
   isRepeatable: 1
-  maxPurchaseCount: 5
-  costGrowthFactor: 3
+  maxPurchaseCount: 10
+  baseCost: 1000
+  costGrowthFactor: 1.5
+  requiredKey: 
