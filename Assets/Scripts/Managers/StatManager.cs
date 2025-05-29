@@ -54,7 +54,6 @@ public class StatManager : MonoBehaviour
         AddDefaultFloat(Consts.Upgrades.KNOCKBACK_POWER, 100f);
         AddDefaultFloat(Consts.Upgrades.RELOAD_SPEED, 1f);
         AddDefaultFloat(Consts.Upgrades.BULLET_MOVE_SPEED, 10f);
-        AddDefaultFloat(Consts.Upgrades.CLIP_SIZE, 5f);
         AddDefaultFloat(Consts.Upgrades.CRITICAL_HIT_RATE, 0.1f);
         AddDefaultFloat(Consts.Upgrades.CRITICAL_HIT_MULTIPLIER, 2f);
         // Defence Upgrades
@@ -75,7 +74,6 @@ public class StatManager : MonoBehaviour
         AddDefaultFloat(Consts.Upgrades.TELEPORT_COOLDOWN, 10f);
         // Extra Upgrades
         AddDefaultFloat(Consts.Upgrades.SHIP_SPEED, 5f);
-        AddDefaultFloat(Consts.Upgrades.SHIP_SIZE, 1f);
         AddDefaultFloat(Consts.Upgrades.MONEY_MULTIPLER, 1f);
         AddDefaultFloat(Consts.Upgrades.DRONE_COUNT, 0);
         AddDefaultFloat(Consts.Upgrades.DRONE_POWER, 25f);

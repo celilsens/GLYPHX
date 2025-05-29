@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private float _moveSpeed => StatManager.Instance.GetFloatStat(Consts.Upgrades.SHIP_SPEED);
     [SerializeField] private float _smoothTime = 0.1f;
     [SerializeField] private float _angularSpeed = 500f;
     private float _storedAngularVelocity;

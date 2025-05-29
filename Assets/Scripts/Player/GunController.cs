@@ -6,9 +6,9 @@ public class GunController : MonoBehaviour
     [SerializeField] private float _distanceFromPlayer = 1f;
     [SerializeField] private float _rotationOffset = -90f;
     [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private float _bulletSpeed = 15f;
+    [SerializeField] private float _bulletSpeed  => StatManager.Instance.GetFloatStat(Consts.Upgrades.BULLET_MOVE_SPEED);
     [SerializeField] private float _bulletSpawnOffset = 4f;
-    [SerializeField] private float _fireCooldown = 1f;
+    [SerializeField] private float _fireCooldown => StatManager.Instance.GetFloatStat(Consts.Upgrades.RELOAD_SPEED);
     private float _lastShotTime = 0f;
 
     private void Update()

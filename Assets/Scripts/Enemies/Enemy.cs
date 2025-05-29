@@ -89,7 +89,18 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (other.CompareTag("Bullet"))
         {
-            float damageTaken = StatManager.Instance.GetFloatStat(Consts.Upgrades.BASE_DAMAGE) * StatManager.Instance.GetFloatStat(Consts.Upgrades.DAMAGE_MULTIPLIER);
+            float baseDamage = StatManager.Instance.GetFloatStat(Consts.Upgrades.BASE_DAMAGE);
+            float damageMultiplier = StatManager.Instance.GetFloatStat(Consts.Upgrades.DAMAGE_MULTIPLIER);
+            float criticalHitRate = StatManager.Instance.GetFloatStat(Consts.Upgrades.CRITICAL_HIT_RATE);
+            float criticalHitMultiplier = StatManager.Instance.GetFloatStat(Consts.Upgrades.CRITICAL_HIT_MULTIPLIER);
+
+            float damageTaken = baseDamage * damageMultiplier;
+
+            if (UnityEngine.Random.value <= criticalHitRate)
+            {
+                damageTaken *= criticalHitMultiplier;
+            }
+
             TakeDamage(damageTaken);
             Destroy(other.gameObject);
         }

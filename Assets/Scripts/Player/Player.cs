@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    public float MaxPlayerHealth { get; private set; }
-    public float CurrentPlayerHealth { get; private set; }
-    public float MaxPlayerShield { get; private set; }
-    public float CurrentPlayerShield { get; private set; }
+    private float MaxPlayerHealth;
+    private float CurrentPlayerHealth;
+    private float MaxPlayerShield;
+    private float CurrentPlayerShield;
 
     private void Start()
     {
         StartCoroutine(WaitAndLoadStats());
+        StartCoroutine(RegenCoroutine());
 
         Debug.Log("Player Health is: " + MaxPlayerHealth);
         Debug.Log("Player Shield is: " + MaxPlayerShield);
@@ -33,6 +34,28 @@ public class Player : MonoBehaviour, IDamageable
         LoadStatsFromStatManager();
         Debug.Log("Player Health is: " + MaxPlayerHealth);
     }
+
+    private IEnumerator RegenCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            float healthRegen = StatManager.Instance.GetFloatStat(Consts.Upgrades.HEALTH_REGEN);
+            float shieldRegen = StatManager.Instance.GetFloatStat(Consts.Upgrades.SHIELD_REGEN);
+
+            if (CurrentPlayerHealth < MaxPlayerHealth)
+            {
+                CurrentPlayerHealth = Mathf.Min(CurrentPlayerHealth + healthRegen, MaxPlayerHealth);
+            }
+
+            if (CurrentPlayerShield < MaxPlayerShield)
+            {
+                CurrentPlayerShield = Mathf.Min(CurrentPlayerShield + shieldRegen, MaxPlayerShield);
+            }
+        }
+    }
+
 
     public void TakeDamage(float damage)
     {

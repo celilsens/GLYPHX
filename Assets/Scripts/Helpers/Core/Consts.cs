@@ -22,7 +22,6 @@ public class Consts
         public const string KNOCKBACK_POWER = "KnockbackPower";
         public const string RELOAD_SPEED = "ReloadSpeed";
         public const string BULLET_MOVE_SPEED = "BulletMoveSpeed";
-        public const string CLIP_SIZE = "ClipSize";
         public const string CRITICAL_HIT_RATE = "CriticalHitRate";
         public const string CRITICAL_HIT_MULTIPLIER = "CriticalHitMultiplier";
 
@@ -47,7 +46,6 @@ public class Consts
 
         //Extra Upgrades
         public const string SHIP_SPEED = "ShipSpeed";
-        public const string SHIP_SIZE = "ShipSize";
         public const string MONEY_MULTIPLER = "MoneyMultipler";
         public const string DRONE_COUNT = "DroneCount";
         public const string DRONE_POWER = "DronePower";

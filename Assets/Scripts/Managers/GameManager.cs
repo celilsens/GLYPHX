@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void AddMoney(float amount)
     {
-        _playerMoney += amount;
+        _playerMoney += amount * StatManager.Instance.GetFloatStat(Consts.Upgrades.MONEY_MULTIPLER);
         SavePlayerMoney();
     }
 
