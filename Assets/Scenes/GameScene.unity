@@ -1786,7 +1786,7 @@ MonoBehaviour:
   teleportKey: 304
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   boundaryCenter: {fileID: 1970394119}
   boundaryRadius: 29
 --- !u!114 &644546978
@@ -2090,6 +2090,9 @@ MonoBehaviour:
   _winUIMoneyText: {fileID: 977701763}
   _winUINextLevel: {fileID: 1430321487}
   _winUIComplate: {fileID: 1369209198}
+  _winUIComplateMoneyText: {fileID: 1389019730}
+  _winUIComplateRestartButton: {fileID: 2071048741}
+  _winUIComplateHangarButton: {fileID: 1602779381}
   _loseUIRestartButton: {fileID: 2003464773}
   _loseUIHangarButton: {fileID: 1924471861}
   _loseUIMoneyText: {fileID: 1571305592}

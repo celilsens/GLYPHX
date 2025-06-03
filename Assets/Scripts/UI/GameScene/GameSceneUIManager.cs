@@ -27,6 +27,9 @@ public class GameSceneUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _winUIMoneyText;
     [SerializeField] private GameObject _winUINextLevel;
     [SerializeField] private GameObject _winUIComplate;
+    [SerializeField] private TMP_Text _winUIComplateMoneyText;
+    [SerializeField] private Button _winUIComplateRestartButton;
+    [SerializeField] private Button _winUIComplateHangarButton;
 
     [Header("Lose UI Elements")]
     [SerializeField] private Button _loseUIRestartButton;
@@ -105,7 +108,6 @@ public class GameSceneUIManager : MonoBehaviour
         }
     }
 
-
     private void OnDisable()
     {
         if (GameManager.Instance != null)
@@ -129,6 +131,9 @@ public class GameSceneUIManager : MonoBehaviour
         _winUIHangarButton?.onClick.AddListener(GoToHangar);
         _winUINextLevelButton?.onClick.AddListener(WinUINextLevel);
 
+        _winUIComplateRestartButton?.onClick.AddListener(RestartGame);
+        _winUIComplateHangarButton?.onClick.AddListener(GoToHangar);
+
         _loseUIRestartButton?.onClick.AddListener(RestartGame);
         _loseUIHangarButton?.onClick.AddListener(GoToHangar);
 
@@ -151,7 +156,12 @@ public class GameSceneUIManager : MonoBehaviour
 
         if (_winUIMoneyText != null)
         {
-            _winUIMoneyText.text = "Total Money: " + GameManager.Instance.GetMoneyString();
+            _winUIMoneyText.text = "You Have: " + GameManager.Instance.GetMoneyString();
+        }
+
+        if (_winUIComplateMoneyText != null)
+        {
+            _winUIComplateMoneyText.text = "You Have : " + GameManager.Instance.GetMoneyString();
         }
 
         int currentLevel = GameManager.Instance.GetSelectedLevelIndex();
@@ -176,7 +186,7 @@ public class GameSceneUIManager : MonoBehaviour
         GameManager.Instance.ChangeGameStatus(false);
         if (_loseUIMoneyText != null)
         {
-            _loseUIMoneyText.text = "You Gained: " + GameManager.Instance.GetMoneyString();
+            _loseUIMoneyText.text = "You Have: " + GameManager.Instance.GetMoneyString();
         }
 
         _redBackgroundOverlay.SetActive(true);
@@ -207,16 +217,11 @@ public class GameSceneUIManager : MonoBehaviour
     private void WinUINextLevel()
     {
         int currentLevel = GameManager.Instance.GetSelectedLevelIndex();
-        int maxUnlockedLevel = GameManager.Instance.GetMaxUnlockedLevel();
+        int totalLevels = GameManager.Instance.AllLevels.Length;
 
-        if (currentLevel < maxUnlockedLevel)
+        if (currentLevel + 1 < totalLevels)
         {
             GameManager.Instance.SetSelectedLevel(currentLevel + 1);
-        }
-        else
-        {
-            _winUINextLevel.SetActive(false);
-            _winUIComplate.SetActive(true);
         }
 
         RestartGame();

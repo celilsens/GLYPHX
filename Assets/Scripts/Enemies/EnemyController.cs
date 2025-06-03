@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,6 +11,9 @@ public class EnemyController : MonoBehaviour
 
     private Transform _playerTransform;
     private Rigidbody2D _rb;
+
+    private bool isKnockedBack = false;
+    private Vector2 knockbackVelocity;
 
     private void Start()
     {
@@ -54,6 +58,27 @@ public class EnemyController : MonoBehaviour
 
     private void MoveEnemy(Vector2 direction)
     {
-        _rb.MovePosition(_rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        Vector2 finalVelocity = isKnockedBack ? knockbackVelocity : direction * moveSpeed;
+        _rb.MovePosition(_rb.position + finalVelocity * Time.fixedDeltaTime);
     }
+
+
+    public void ApplyKnockback(Vector2 direction, float force, float duration)
+    {
+        if (!isKnockedBack)
+            StartCoroutine(KnockbackRoutine(direction, force, duration));
+    }
+
+    private IEnumerator KnockbackRoutine(Vector2 direction, float force, float duration)
+    {
+        isKnockedBack = true;
+        knockbackVelocity = direction * force;
+
+        yield return new WaitForSeconds(duration);
+
+        isKnockedBack = false;
+        knockbackVelocity = Vector2.zero;
+    }
+
+
 }

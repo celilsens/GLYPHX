@@ -51,7 +51,7 @@ public class StatManager : MonoBehaviour
         // Attack Upgrades
         AddDefaultFloat(Consts.Upgrades.BASE_DAMAGE, 10f);
         AddDefaultFloat(Consts.Upgrades.DAMAGE_MULTIPLIER, 1f);
-        AddDefaultFloat(Consts.Upgrades.KNOCKBACK_POWER, 100f);
+        AddDefaultFloat(Consts.Upgrades.KNOCKBACK_POWER, 2f);
         AddDefaultFloat(Consts.Upgrades.RELOAD_SPEED, 2f);
         AddDefaultFloat(Consts.Upgrades.BULLET_MOVE_SPEED, 10f);
         AddDefaultFloat(Consts.Upgrades.CRITICAL_HIT_RATE, 0.1f);

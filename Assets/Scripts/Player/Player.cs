@@ -8,10 +8,16 @@ public class Player : MonoBehaviour, IDamageable
     public float MaxPlayerShield { get; private set; }
     public float CurrentPlayerShield { get; private set; }
 
+    private Rigidbody2D _playerRB;
+
+    private float _knockbackForce = 50f;
+
     private void Start()
     {
         StartCoroutine(WaitAndLoadStats());
         StartCoroutine(RegenCoroutine());
+
+        _playerRB = GetComponent<Rigidbody2D>();
 
         Debug.Log("Player Health is: " + MaxPlayerHealth);
         Debug.Log("Player Shield is: " + MaxPlayerShield);
@@ -90,11 +96,10 @@ public class Player : MonoBehaviour, IDamageable
     {
         GameManager.Instance.ChangeGameStatus(false);
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (_playerRB != null)
         {
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            rb.linearVelocity = Vector2.zero;
+            _playerRB.bodyType = RigidbodyType2D.Kinematic;
+            _playerRB.linearVelocity = Vector2.zero;
         }
 
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
@@ -125,6 +130,8 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (collision.CompareTag("Enemy"))
         {
+            Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
+            Knockback(knockbackDirection, _knockbackForce);
             TakeDamage(50f);
         }
 
@@ -132,6 +139,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             TakeDamage(500000f);
         }
+    }
+
+    private void Knockback(Vector2 direction, float force)
+    {
+        _playerRB.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
 }
