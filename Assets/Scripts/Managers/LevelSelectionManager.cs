@@ -18,7 +18,7 @@ public class LevelSelectionManager : MonoBehaviour
     {
         if (GameManager.Instance == null || GameManager.Instance.AllLevels == null)
         {
-            Debug.LogError("GameManager ya da AllLevels null!");
+            Debug.LogError("GameManager or AllLevels null!");
             return;
         }
 

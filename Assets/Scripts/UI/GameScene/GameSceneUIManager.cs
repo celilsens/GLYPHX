@@ -135,6 +135,8 @@ public class GameSceneUIManager : MonoBehaviour
         _settingsUIOpenButton?.onClick.AddListener(GameManager.Instance.PauseGame);
         _settingsUICloseButton?.onClick.AddListener(GameManager.Instance.ResumeGame);
         _settingsUIResumeButton?.onClick.AddListener(GameManager.Instance.ResumeGame);
+        _settingsUIRestartButton?.onClick.AddListener(RestartGame);
+        _settingsUIHangarButton?.onClick.AddListener(GoToHangar);
     }
 
     private void HandleGameOver()

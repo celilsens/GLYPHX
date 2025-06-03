@@ -15,7 +15,7 @@ MonoBehaviour:
   category: 3
   upgradeName: Ship Speed
   key: ShipSpeed
-  effectAmount: 10
+  effectAmount: 1
   isRepeatable: 1
   maxPurchaseCount: 10
   baseCost: 1000

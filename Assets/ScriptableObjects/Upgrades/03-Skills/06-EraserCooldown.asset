@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 2
   upgradeName: Eraser Cooldown
   key: EraserCooldown
-  effectAmount: 10
+  effectAmount: -1
   isRepeatable: 1
-  maxPurchaseCount: 10
+  maxPurchaseCount: 5
   baseCost: 1000
   costGrowthFactor: 1.5
   requiredKey: Eraser

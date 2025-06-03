@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 2
   upgradeName: Teleport Cooldown
   key: TeleportCooldown
-  effectAmount: 10
+  effectAmount: -1
   isRepeatable: 1
-  maxPurchaseCount: 10
+  maxPurchaseCount: 3
   baseCost: 1000
   costGrowthFactor: 1.5
   requiredKey: Teleport

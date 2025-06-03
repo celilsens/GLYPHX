@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6474500430973749762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7022744079006439294}
   - component: {fileID: 1879530899972119907}
   - component: {fileID: 8821362827820875029}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4933,7 +4933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5946996652583480307}
   - component: {fileID: 4038784064808976965}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Hexagon_Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5023,7 +5023,7 @@ GameObject:
   - component: {fileID: 5930248764297272629}
   - component: {fileID: -1154829686408670237}
   - component: {fileID: -5049445498595620681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Hexagon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5060,7 +5060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749ca53071699354d85203db9f6afac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  moveSpeed: 3
+  separationDistance: 1.5
+  separationStrength: 1.5
 --- !u!114 &5930248764297272629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5160,7 +5162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5570269551608476876}
   - component: {fileID: 176719326487176285}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Hexagon_Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

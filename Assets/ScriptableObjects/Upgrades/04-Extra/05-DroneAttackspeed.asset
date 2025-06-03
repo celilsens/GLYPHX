@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
-  m_Name: 04-DroneCount
+  m_Name: 05-DroneAttackspeed
   m_EditorClassIdentifier: 
   category: 3
-  upgradeName: Drone Count
-  key: DroneCount
-  effectAmount: 1
+  upgradeName: Drone Attack Speed
+  key: DroneAttackSpeed
+  effectAmount: -0.1
   isRepeatable: 1
-  maxPurchaseCount: 3
+  maxPurchaseCount: 5
   baseCost: 1000
   costGrowthFactor: 1.5
-  requiredKey: 
+  requiredKey: DroneCount

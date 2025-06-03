@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4234840416611198607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4079917361978867414}
   - component: {fileID: 3869221336608026984}
   - component: {fileID: -4472445711285301537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Pentagon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7089384413129120580}
   - component: {fileID: 7359597951483450659}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Pentagon_Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1708419152567008754}
   - component: {fileID: 2410656756408480101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Pentagon_Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 2721561783335961516}
   - component: {fileID: 1262160935714067269}
   - component: {fileID: 912788531923340239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

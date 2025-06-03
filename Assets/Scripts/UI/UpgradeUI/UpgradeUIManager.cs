@@ -5,7 +5,6 @@ using System.Collections;
 public class UpgradeUIManager : MonoBehaviour
 {
     public static UpgradeUIManager Instance { get; private set; }
-
     public GameObject upgradeUIPrefab;
     public UpgradeData[] upgrades;
 
@@ -18,8 +17,8 @@ public class UpgradeUIManager : MonoBehaviour
     [Header("Money Display")]
     public TextMeshProUGUI playerMoneyText;
 
-    private Color originalColor;
-    private float originalFontSize;
+    private Color _originalColor;
+    private float _originalFontSize;
 
     private void Awake()
     {
@@ -27,8 +26,8 @@ public class UpgradeUIManager : MonoBehaviour
 
         if (playerMoneyText != null)
         {
-            originalColor = playerMoneyText.color;
-            originalFontSize = playerMoneyText.fontSize;
+            _originalColor = playerMoneyText.color;
+            _originalFontSize = playerMoneyText.fontSize;
         }
     }
 
@@ -84,19 +83,19 @@ public class UpgradeUIManager : MonoBehaviour
         float time = 0f;
 
         Color targetColor = Color.red;
-        float targetSize = originalFontSize * 1.15f;
+        float targetSize = _originalFontSize * 1.15f;
 
         while (time < duration)
         {
             float t = time / duration;
-            playerMoneyText.color = Color.Lerp(targetColor, originalColor, t);
-            playerMoneyText.fontSize = Mathf.Lerp(targetSize, originalFontSize, t);
+            playerMoneyText.color = Color.Lerp(targetColor, _originalColor, t);
+            playerMoneyText.fontSize = Mathf.Lerp(targetSize, _originalFontSize, t);
             time += Time.deltaTime;
             yield return null;
         }
 
-        playerMoneyText.color = originalColor;
-        playerMoneyText.fontSize = originalFontSize;
+        playerMoneyText.color = _originalColor;
+        playerMoneyText.fontSize = _originalFontSize;
     }
 
     public void RefreshAllUpgradeUIs()

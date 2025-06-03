@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c4a6c0e97a18c74f90573c1c19e2e69, type: 3}
-  m_Name: 05-DronePower
+  m_Name: 06-CriticalHitRate
   m_EditorClassIdentifier: 
-  category: 3
-  upgradeName: Drone Power
-  key: DronePower
+  category: 0
+  upgradeName: Critical Hit Rate
+  key: CriticalHitRate
   effectAmount: 10
   isRepeatable: 1
   maxPurchaseCount: 10
-  baseCost: 1000
+  baseCost: 107
   costGrowthFactor: 1.5
-  requiredKey: DroneCount
+  requiredKey: 

@@ -52,10 +52,10 @@ public class StatManager : MonoBehaviour
         AddDefaultFloat(Consts.Upgrades.BASE_DAMAGE, 10f);
         AddDefaultFloat(Consts.Upgrades.DAMAGE_MULTIPLIER, 1f);
         AddDefaultFloat(Consts.Upgrades.KNOCKBACK_POWER, 100f);
-        AddDefaultFloat(Consts.Upgrades.RELOAD_SPEED, 1f);
+        AddDefaultFloat(Consts.Upgrades.RELOAD_SPEED, 2f);
         AddDefaultFloat(Consts.Upgrades.BULLET_MOVE_SPEED, 10f);
         AddDefaultFloat(Consts.Upgrades.CRITICAL_HIT_RATE, 0.1f);
-        AddDefaultFloat(Consts.Upgrades.CRITICAL_HIT_MULTIPLIER, 2f);
+        AddDefaultFloat(Consts.Upgrades.CRITICAL_HIT_MULTIPLIER, 1f);
         // Defence Upgrades
         AddDefaultFloat(Consts.Upgrades.BASE_HEALTH, 100f);
         AddDefaultFloat(Consts.Upgrades.HEALTH_MULTIPLIER, 1f);
@@ -67,19 +67,19 @@ public class StatManager : MonoBehaviour
         AddDefaultBool(Consts.Upgrades.ROCKET, false);
         AddDefaultFloat(Consts.Upgrades.ROCKET_POWER, 50f);
         AddDefaultFloat(Consts.Upgrades.ROCKET_RADIUS, 3f);
-        AddDefaultFloat(Consts.Upgrades.ROCKET_COOLDOWN, 5f);
+        AddDefaultFloat(Consts.Upgrades.ROCKET_COOLDOWN, 10f);
         AddDefaultBool(Consts.Upgrades.ERASER, false);
-        AddDefaultFloat(Consts.Upgrades.ERASER_COOLDOWN, 6f);
+        AddDefaultFloat(Consts.Upgrades.ERASER_COOLDOWN, 10f);
         AddDefaultBool(Consts.Upgrades.TELEPORT, false);
-        AddDefaultFloat(Consts.Upgrades.TELEPORT_COOLDOWN, 10f);
+        AddDefaultFloat(Consts.Upgrades.TELEPORT_COOLDOWN, 5f);
         // Extra Upgrades
         AddDefaultFloat(Consts.Upgrades.SHIP_SPEED, 5f);
         AddDefaultFloat(Consts.Upgrades.MONEY_MULTIPLER, 1f);
         AddDefaultFloat(Consts.Upgrades.DRONE_COUNT, 0);
         AddDefaultFloat(Consts.Upgrades.DRONE_POWER, 25f);
         AddDefaultFloat(Consts.Upgrades.DRONE_ATTACK_SPEED, 1f);
-        AddDefaultFloat(Consts.Upgrades.DOUBLE_FIRE, 0);
-        AddDefaultFloat(Consts.Upgrades.TRIPLE_FIRE, 0);
+        AddDefaultBool(Consts.Upgrades.DOUBLE_FIRE, false);
+        AddDefaultBool(Consts.Upgrades.TRIPLE_FIRE, false);
     }
 
     private void AddDefaultFloat(string key, float defaultValue)

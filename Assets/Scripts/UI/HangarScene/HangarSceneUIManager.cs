@@ -19,8 +19,8 @@ public class HangerSceneUIManager : MonoBehaviour
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private GameObject _mainMenuIcon;
 
-    [SerializeField] private float scaleFactor = 1.1f;
-    [SerializeField] private float animationDuration = 0.3f;
+    [SerializeField] private float _scaleFactor = 1.1f;
+    [SerializeField] private float _animationDuration = 0.3f;
 
     private void Start()
     {
@@ -74,7 +74,7 @@ public class HangerSceneUIManager : MonoBehaviour
 
     private void ScaleIcon(GameObject icon, bool enlarge)
     {
-        Vector3 targetScale = enlarge ? Vector3.one * scaleFactor : Vector3.one;
-        icon.transform.DOScale(targetScale, animationDuration).SetEase(Ease.OutBack);
+        Vector3 targetScale = enlarge ? Vector3.one * _scaleFactor : Vector3.one;
+        icon.transform.DOScale(targetScale, _animationDuration).SetEase(Ease.OutBack);
     }
 }

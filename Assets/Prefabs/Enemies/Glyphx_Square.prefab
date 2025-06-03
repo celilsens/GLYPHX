@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6797679546490966297}
   - component: {fileID: 485816696184830688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Square_Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 351740991637835827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2060999539042106893}
   - component: {fileID: 3659276412016793211}
   - component: {fileID: -7286647147120259654}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Square
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9195123659163142825}
   - component: {fileID: 4368561063438338118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glyphx_Square_Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 6999123249615151196}
   - component: {fileID: 5977214611818455251}
   - component: {fileID: 4464614105815959293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

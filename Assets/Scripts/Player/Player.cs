@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    private float MaxPlayerHealth;
-    private float CurrentPlayerHealth;
-    private float MaxPlayerShield;
-    private float CurrentPlayerShield;
+    public float MaxPlayerHealth { get; private set; }
+    public float CurrentPlayerHealth { get; private set; }
+    public float MaxPlayerShield { get; private set; }
+    public float CurrentPlayerShield { get; private set; }
 
     private void Start()
     {

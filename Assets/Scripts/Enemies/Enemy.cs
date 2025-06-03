@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using System;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _rewardAmount = 100f;
@@ -13,11 +14,16 @@ public class Enemy : MonoBehaviour, IDamageable
     public event Action OnEnemyDeath;
 
     private bool isDead = false;
+    public EnemyController _enemyController;
+    private Rigidbody2D _rb;
 
     private void Start()
     {
         _currentHealth = _maxHealth;
         UpdateFill();
+
+        _enemyController = GetComponent<EnemyController>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(float damage)
@@ -43,6 +49,12 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (isDead) return;
         isDead = true;
+
+        if (_enemyController != null)
+            _enemyController.enabled = false;
+
+        if (_rb != null)
+            _rb.linearVelocity = Vector2.zero;
 
         foreach (var collider in GetComponents<Collider2D>())
             collider.enabled = false;
@@ -105,4 +117,5 @@ public class Enemy : MonoBehaviour, IDamageable
             Destroy(other.gameObject);
         }
     }
+
 }

@@ -63,16 +63,23 @@ public class UpgradeManager : MonoBehaviour
         if (currentStat == null)
             return false;
 
-        float newValue = currentStat.GetFloat() + data.effectAmount;
-        StatManager.Instance.SetStat(data.key, new StatValue(newValue));
+        switch (currentStat.Type)
+        {
+            case StatType.Float:
+                float newFloatValue = currentStat.GetFloat() + data.effectAmount;
+                StatManager.Instance.SetStat(data.key, new StatValue(newFloatValue));
+                break;
+
+            case StatType.Bool:
+                StatManager.Instance.SetStat(data.key, new StatValue(true));
+                break;
+        }
 
         PlayerPrefs.SetInt(GetPurchaseKey(data.key), currentCount + 1);
         PlayerPrefs.Save();
 
         return true;
     }
-
-
 
     public float CalculateCurrentCost(UpgradeData data, int currentCount)
     {

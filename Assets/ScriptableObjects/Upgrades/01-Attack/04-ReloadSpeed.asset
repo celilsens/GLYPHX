@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 0
   upgradeName: Reload Speed
   key: ReloadSpeed
-  effectAmount: 10
+  effectAmount: -0.2
   isRepeatable: 1
-  maxPurchaseCount: 10
+  maxPurchaseCount: 8
   baseCost: 104
   costGrowthFactor: 1.5
   requiredKey: 
