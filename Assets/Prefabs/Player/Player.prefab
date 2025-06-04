@@ -9,7 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7278964303978183461}
+  - component: {fileID: 3060459786560606919}
   - component: {fileID: 7864696021207139739}
+  - component: {fileID: 7008363110967184052}
+  - component: {fileID: 5353077804587963595}
+  - component: {fileID: 2887947377864996153}
+  - component: {fileID: 6231568367083664481}
+  - component: {fileID: 7633573027874326016}
   - component: {fileID: 513570336215729581}
   - component: {fileID: 8539857905055899556}
   m_Layer: 0
@@ -37,6 +43,18 @@ Transform:
   - {fileID: 6300873355372229745}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3060459786560606919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961241254692580296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ffeb5f2ace5104e80aa4cf64513298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7864696021207139739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +69,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smoothTime: 0.1
   _angularSpeed: 500
+--- !u!114 &7008363110967184052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961241254692580296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b665922fe915b7489a711abd4206ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dronePrefab: {fileID: 2961241254692580296, guid: 085266b6e189f0d4fa13172da057f2d9, type: 3}
+--- !u!114 &5353077804587963595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961241254692580296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bc135176bc9794380b9664d50c37b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 4303472701575218765, guid: 2d09a4a3c1f9087408cbe35680f746b6, type: 3}
+  _firePoint: {fileID: 4779787853391641419}
+--- !u!114 &2887947377864996153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961241254692580296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4935cf84e1f31b844bc9e393f885b520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rocketPrefab: {fileID: 4303472701575218765, guid: 38d638737b0d66f4b83e2def6e248fcd, type: 3}
+  _firePoint: {fileID: 4779787853391641419}
+--- !u!114 &6231568367083664481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961241254692580296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455300199e60803498d74ea423e56956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportRange: 10
+  teleportKey: 304
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  boundaryCenter: {fileID: 0}
+  boundaryRadius: 29
+--- !u!114 &7633573027874326016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961241254692580296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25820543488c3414eb4ac001a18504d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  impulseSource: {fileID: 0}
 --- !u!50 &513570336215729581
 Rigidbody2D:
   serializedVersion: 5
@@ -108,7 +200,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

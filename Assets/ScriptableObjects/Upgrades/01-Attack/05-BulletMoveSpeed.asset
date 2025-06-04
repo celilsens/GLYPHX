@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 0
   upgradeName: Bullet Move Speed
   key: BulletMoveSpeed
-  effectAmount: 2
+  effectAmount: 1.5
   isRepeatable: 1
   maxPurchaseCount: 10
-  baseCost: 105
-  costGrowthFactor: 1.5
+  baseCost: 300
+  costGrowthFactor: 1.25
   requiredKey: 

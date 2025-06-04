@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 2
   upgradeName: Rocket Power
   key: RocketPower
-  effectAmount: 10
+  effectAmount: 15
   isRepeatable: 1
   maxPurchaseCount: 10
-  baseCost: 1000
-  costGrowthFactor: 1.5
+  baseCost: 600
+  costGrowthFactor: 1.4
   requiredKey: Rocket

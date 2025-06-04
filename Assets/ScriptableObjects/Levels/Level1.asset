@@ -16,4 +16,4 @@ MonoBehaviour:
   levelName: Level 1
   enemySpawns:
   - enemyPrefab: {fileID: 7545824832833917023, guid: f36074dd3fc86c54c8ad36c007b882c3, type: 3}
-    count: 1
+    count: 3

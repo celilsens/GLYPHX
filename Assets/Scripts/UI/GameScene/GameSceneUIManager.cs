@@ -156,12 +156,12 @@ public class GameSceneUIManager : MonoBehaviour
 
         if (_winUIMoneyText != null)
         {
-            _winUIMoneyText.text = "You Have: " + GameManager.Instance.GetMoneyString();
+            _winUIMoneyText.text = "You Have: " + GameManager.Instance.GetMoneyString() + "$";
         }
 
         if (_winUIComplateMoneyText != null)
         {
-            _winUIComplateMoneyText.text = "You Have : " + GameManager.Instance.GetMoneyString();
+            _winUIComplateMoneyText.text = "You Have : " + GameManager.Instance.GetMoneyString() + "$";
         }
 
         int currentLevel = GameManager.Instance.GetSelectedLevelIndex();
@@ -186,7 +186,7 @@ public class GameSceneUIManager : MonoBehaviour
         GameManager.Instance.ChangeGameStatus(false);
         if (_loseUIMoneyText != null)
         {
-            _loseUIMoneyText.text = "You Have: " + GameManager.Instance.GetMoneyString();
+            _loseUIMoneyText.text = "You Have: " + GameManager.Instance.GetMoneyString() + "$";
         }
 
         _redBackgroundOverlay.SetActive(true);

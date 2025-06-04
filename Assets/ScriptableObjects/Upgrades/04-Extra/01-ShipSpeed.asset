@@ -17,7 +17,7 @@ MonoBehaviour:
   key: ShipSpeed
   effectAmount: 1
   isRepeatable: 1
-  maxPurchaseCount: 10
-  baseCost: 1000
-  costGrowthFactor: 1.5
+  maxPurchaseCount: 5
+  baseCost: 250
+  costGrowthFactor: 2
   requiredKey: 

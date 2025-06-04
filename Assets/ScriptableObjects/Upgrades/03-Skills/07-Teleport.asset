@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 2
   upgradeName: Teleport
   key: Teleport
-  effectAmount: 10
+  effectAmount: 1
   isRepeatable: 0
   maxPurchaseCount: 1
-  baseCost: 1000
+  baseCost: 500
   costGrowthFactor: 1.5
   requiredKey: 

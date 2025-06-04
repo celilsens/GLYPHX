@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 2
   upgradeName: Rocket Radius
   key: RocketRadius
-  effectAmount: 1
+  effectAmount: 0.25
   isRepeatable: 1
   maxPurchaseCount: 5
-  baseCost: 1000
-  costGrowthFactor: 1.5
+  baseCost: 600
+  costGrowthFactor: 1.35
   requiredKey: Rocket

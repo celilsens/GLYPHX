@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 1
   upgradeName: Health Multiplier
   key: HealthMultiplier
-  effectAmount: 10
+  effectAmount: 0.2
   isRepeatable: 1
   maxPurchaseCount: 10
-  baseCost: 201
-  costGrowthFactor: 1.5
+  baseCost: 500
+  costGrowthFactor: 1.35
   requiredKey: 

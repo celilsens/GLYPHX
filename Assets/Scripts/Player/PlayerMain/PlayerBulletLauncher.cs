@@ -31,10 +31,32 @@ public class PlayerBulletLauncher : MonoBehaviour
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;
-
         Vector3 direction = (mouseWorldPos - _firePoint.position).normalized;
+        Vector3 right = Vector3.Cross(direction, Vector3.forward);
 
-        GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
+        bool isTriple = StatManager.Instance.GetBoolStat(Consts.Upgrades.TRIPLE_FIRE);
+        bool isDouble = StatManager.Instance.GetBoolStat(Consts.Upgrades.DOUBLE_FIRE);
+
+        if (isTriple)
+        {
+            FireBulletAtOffset(_firePoint.position - right * 0.3f, direction);
+            FireBulletAtOffset(_firePoint.position, direction);
+            FireBulletAtOffset(_firePoint.position + right * 0.3f, direction);
+        }
+        else if (isDouble)
+        {
+            FireBulletAtOffset(_firePoint.position - right * 0.2f, direction);
+            FireBulletAtOffset(_firePoint.position + right * 0.2f, direction);
+        }
+        else
+        {
+            FireBulletAtOffset(_firePoint.position, direction);
+        }
+    }
+
+    private void FireBulletAtOffset(Vector3 position, Vector3 direction)
+    {
+        GameObject bullet = Instantiate(_bulletPrefab, position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         if (rb != null)
@@ -44,4 +66,5 @@ public class PlayerBulletLauncher : MonoBehaviour
 
         bullet.transform.up = direction;
     }
+
 }

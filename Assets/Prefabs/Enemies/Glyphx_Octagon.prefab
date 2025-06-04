@@ -65,10 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7e48aa21edfa34599c6dcdba8d75e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardAmount: 10
-  _maxHealth: 300
+  _rewardAmount: 300
+  _maxHealth: 350
   _currentHealth: 0
   _fillTransform: {fileID: 2680597327468509230}
+  _enemyController: {fileID: 0}
 --- !u!61 &2223411584379934575
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -15,5 +15,7 @@ MonoBehaviour:
   levelNumber: 2
   levelName: Level 2
   enemySpawns:
+  - enemyPrefab: {fileID: 1241242186297406263, guid: 13d288bfedadd1a4fac56c9dae1d3fd0, type: 3}
+    count: 2
   - enemyPrefab: {fileID: 7545824832833917023, guid: f36074dd3fc86c54c8ad36c007b882c3, type: 3}
     count: 2

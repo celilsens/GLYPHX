@@ -16,10 +16,12 @@ MonoBehaviour:
   levelName: Level 5
   enemySpawns:
   - enemyPrefab: {fileID: 7545824832833917023, guid: f36074dd3fc86c54c8ad36c007b882c3, type: 3}
-    count: 5
+    count: 2
   - enemyPrefab: {fileID: 1241242186297406263, guid: 13d288bfedadd1a4fac56c9dae1d3fd0, type: 3}
-    count: 5
+    count: 2
+  - enemyPrefab: {fileID: 1260458780930177594, guid: 32766ad76e6f4584ab65423bf538e8a9, type: 3}
+    count: 2
   - enemyPrefab: {fileID: 8511605990770807530, guid: 49b5cfa0666270645a3ced41d9a4ef85, type: 3}
-    count: 5
+    count: 2
   - enemyPrefab: {fileID: 2646438586001179075, guid: a44631e29148f76449861e8ffd253fa0, type: 3}
-    count: 5
+    count: 2

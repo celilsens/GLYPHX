@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 0
   upgradeName: Damage Multiplier
   key: DamageMultiplier
-  effectAmount: 0.5
+  effectAmount: 0.1
   isRepeatable: 1
-  maxPurchaseCount: 6
-  baseCost: 102
+  maxPurchaseCount: 10
+  baseCost: 500
   costGrowthFactor: 1.5
   requiredKey: 

@@ -18,6 +18,6 @@ MonoBehaviour:
   effectAmount: -0.2
   isRepeatable: 1
   maxPurchaseCount: 8
-  baseCost: 104
-  costGrowthFactor: 1.5
+  baseCost: 350
+  costGrowthFactor: 1.3
   requiredKey: 

@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 1
   upgradeName: Health Regen
   key: HealthRegen
-  effectAmount: 10
+  effectAmount: 1
   isRepeatable: 1
   maxPurchaseCount: 10
-  baseCost: 202
-  costGrowthFactor: 1.5
+  baseCost: 300
+  costGrowthFactor: 1.3
   requiredKey: 

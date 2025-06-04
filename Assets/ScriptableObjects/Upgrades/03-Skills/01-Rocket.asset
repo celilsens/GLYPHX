@@ -15,7 +15,7 @@ MonoBehaviour:
   category: 2
   upgradeName: Rocket
   key: Rocket
-  effectAmount: 10
+  effectAmount: 1
   isRepeatable: 0
   maxPurchaseCount: 1
   baseCost: 1000

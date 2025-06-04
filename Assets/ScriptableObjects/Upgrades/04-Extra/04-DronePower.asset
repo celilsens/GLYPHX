@@ -17,7 +17,7 @@ MonoBehaviour:
   key: DronePower
   effectAmount: 10
   isRepeatable: 1
-  maxPurchaseCount: 10
-  baseCost: 1000
-  costGrowthFactor: 1.5
+  maxPurchaseCount: 5
+  baseCost: 600
+  costGrowthFactor: 1.35
   requiredKey: DroneCount

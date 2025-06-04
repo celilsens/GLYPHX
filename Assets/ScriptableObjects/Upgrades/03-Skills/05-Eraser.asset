@@ -15,9 +15,9 @@ MonoBehaviour:
   category: 2
   upgradeName: Eraser
   key: Eraser
-  effectAmount: 10
+  effectAmount: 1
   isRepeatable: 0
   maxPurchaseCount: 1
-  baseCost: 1000
+  baseCost: 1500
   costGrowthFactor: 1.5
   requiredKey: 
