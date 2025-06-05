@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Glyphx_Hexagon_v1_0: 5910830595782623873
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

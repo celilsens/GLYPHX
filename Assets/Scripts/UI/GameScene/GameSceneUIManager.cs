@@ -45,6 +45,8 @@ public class GameSceneUIManager : MonoBehaviour
 
     private Player _playerManager;
 
+    private bool _isPaused = false;
+
     private void Start()
     {
         if (_playerObject != null)
@@ -73,6 +75,11 @@ public class GameSceneUIManager : MonoBehaviour
     private void Update()
     {
         UpdateUI();
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();
+        }
     }
 
     private void UpdateUI()
@@ -105,6 +112,20 @@ public class GameSceneUIManager : MonoBehaviour
                     _shieldBarFillImage.DOFillAmount(targetShieldFill, 0.5f).SetEase(Ease.OutCubic);
                 }
             }
+        }
+    }
+
+    private void TogglePause()
+    {
+        _isPaused = !_isPaused;
+
+        if (_isPaused)
+        {
+            GameManager.Instance.PauseGame();
+        }
+        else
+        {
+            GameManager.Instance.ResumeGame();
         }
     }
 

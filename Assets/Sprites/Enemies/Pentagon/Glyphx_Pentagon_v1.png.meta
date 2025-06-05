@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Glyphx_Pentagon_v1_0: 6671331674732220127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

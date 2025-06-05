@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Glyphx_Square_v1_0: 7407499484818761620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

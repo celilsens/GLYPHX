@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Glyphx_Octagon_Outline_v1_0: -3729982133126092520
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

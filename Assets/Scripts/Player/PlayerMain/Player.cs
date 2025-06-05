@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IDamageable
     private Rigidbody2D _playerRB;
 
     private float _knockbackForce = 50f;
+    private bool _isAlive;
 
     private void Start()
     {
@@ -18,9 +19,6 @@ public class Player : MonoBehaviour, IDamageable
         StartCoroutine(RegenCoroutine());
 
         _playerRB = GetComponent<Rigidbody2D>();
-
-        Debug.Log("Player Health is: " + MaxPlayerHealth);
-        Debug.Log("Player Shield is: " + MaxPlayerShield);
     }
 
     private void LoadStatsFromStatManager()
@@ -43,7 +41,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private IEnumerator RegenCoroutine()
     {
-        while (true)
+        while (!_isAlive)
         {
             yield return new WaitForSeconds(1f);
 
@@ -94,6 +92,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        _isAlive = true;
+        CurrentPlayerHealth = 0f;
+        CurrentPlayerShield = 0f;
         GameManager.Instance.ChangeGameStatus(false);
 
         if (_playerRB != null)

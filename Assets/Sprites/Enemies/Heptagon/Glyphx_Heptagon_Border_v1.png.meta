@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Glyphx_Heptagon_Border_v1_0: 3529683158202171376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

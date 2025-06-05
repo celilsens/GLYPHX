@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Glyphx_Cursor_v1_0: 2518373326206732196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
