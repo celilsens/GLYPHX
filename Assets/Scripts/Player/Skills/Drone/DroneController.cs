@@ -3,7 +3,6 @@ using UnityEngine;
 public class DroneController : MonoBehaviour
 {
     [Header("Drone Settings")]
-    [SerializeField] private float fireCooldown = 1f;
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
