@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) TogglePause();
-        if (Input.GetKeyDown(KeyCode.U)) AddMoney(10000);
     }
 
     #region Game State
